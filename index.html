@@ -340,6 +340,41 @@ section .section-sub { color: var(--dex-muted); font-size: 14px; font-family: va
 }
 .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
 
+/* Unlock modal */
+.unlock-modal { display: none; position: fixed; inset: 0; background: rgba(5, 2, 78, 0.75); backdrop-filter: blur(6px); z-index: 1000; align-items: center; justify-content: center; padding: 24px; animation: fadeIn 0.2s ease; }
+.unlock-modal.open { display: flex; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+.unlock-card { background: var(--dex-white); border-radius: var(--radius-lg); padding: 40px 36px 28px; max-width: 440px; width: 100%; position: relative; box-shadow: 0 24px 60px rgba(5,2,78,0.4); animation: slideUp 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+.unlock-card h3 { font-size: 22px; color: var(--dex-navy); margin-bottom: 6px; text-align: center; font-family: var(--font-primary); }
+.unlock-sub { font-size: 13px; color: var(--dex-muted); text-align: center; margin-bottom: 24px; }
+.unlock-close { position: absolute; top: 12px; right: 12px; background: none; border: none; font-size: 24px; color: var(--dex-muted); cursor: pointer; width: 32px; height: 32px; border-radius: 50%; line-height: 1; transition: background 0.2s, color 0.2s; }
+.unlock-close:hover { background: var(--dex-light-bg); color: var(--dex-navy); }
+.unlock-lock-icon { width: 56px; height: 56px; background: var(--dex-navy); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 18px; box-shadow: 0 8px 24px rgba(5,2,78,0.25); }
+.unlock-card form { display: flex; flex-direction: column; gap: 4px; }
+.unlock-card label { font-size: 11px; color: var(--dex-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.8px; margin-top: 12px; margin-bottom: 6px; font-family: var(--font-secondary); }
+.unlock-card input { padding: 12px 14px; border: 1px solid var(--dex-border); border-radius: var(--radius-sm); font-size: 14px; font-family: var(--font-secondary); transition: border-color 0.2s, box-shadow 0.2s; background: var(--dex-white); color: var(--dex-text); }
+.unlock-card input:focus { outline: none; border-color: var(--dex-blue); box-shadow: 0 0 0 3px var(--dex-blue-10); }
+.unlock-error { color: var(--dex-orange); font-size: 12px; margin-top: 8px; min-height: 16px; font-weight: 500; }
+.unlock-submit { margin-top: 14px; padding: 13px; background: var(--dex-blue); color: var(--dex-white); border: none; border-radius: var(--radius-sm); font-size: 14px; font-weight: 600; cursor: pointer; font-family: var(--font-secondary); transition: background 0.2s; }
+.unlock-submit:hover { background: #0052cc; }
+.unlock-hint { margin-top: 16px; padding: 12px 14px; background: var(--dex-blue-light); border-radius: var(--radius-sm); font-size: 12px; color: var(--dex-navy); border-left: 3px solid var(--dex-blue); }
+.unlock-hint code { background: var(--dex-navy); color: var(--dex-white); padding: 2px 8px; border-radius: 3px; font-size: 11px; font-family: 'Courier New', monospace; font-weight: 600; }
+.unlock-divider { height: 1px; background: var(--dex-border); margin: 18px 0 14px; }
+.unlock-cta-text { font-size: 12px; color: var(--dex-muted); text-align: center; }
+.unlock-cta-text a { color: var(--dex-blue); font-weight: 600; text-decoration: none; }
+
+/* Unlocked state: remove lock/blur */
+.locked-section.unlocked .locked-overlay { display: none; }
+.locked-section.unlocked .locked-content { filter: none; -webkit-filter: none; pointer-events: auto; user-select: auto; opacity: 1; }
+.unlocked-banner { display: none; max-width: 1100px; margin: 24px auto 8px; padding: 14px 22px; background: linear-gradient(135deg, var(--dex-teal), #0e8a6f); color: var(--dex-white); border-radius: var(--radius-md); font-size: 13px; font-weight: 500; text-align: center; box-shadow: 0 4px 16px rgba(22,171,139,0.25); }
+.unlocked-banner.show { display: block; }
+.unlocked-banner strong { font-weight: 700; }
+.unlocked-banner .logout-btn { background: rgba(255,255,255,0.2); color: var(--dex-white); border: 1px solid rgba(255,255,255,0.3); padding: 4px 12px; border-radius: 20px; font-size: 11px; margin-left: 12px; cursor: pointer; font-family: var(--font-secondary); }
+.unlocked-banner .logout-btn:hover { background: rgba(255,255,255,0.3); }
+.deep-full { padding: 8px 0; }
+.deep-full h5 { font-family: var(--font-primary); }
+
 /* Print */
 @media print {
   .nav, .urgency, .pricing-section, .locked-overlay, .cta-box { display: none; }
@@ -378,6 +413,12 @@ section .section-sub { color: var(--dex-muted); font-size: 14px; font-family: va
     </ul>
   </div>
 </nav>
+
+<!-- UNLOCKED BANNER -->
+<div class="unlocked-banner" id="unlockedBanner">
+  ✅ <strong>Full Audit odomknutý</strong> · všetky 3 hĺbkové analýzy dostupné · 6 účtov Velvesa cez MCC
+  <button class="logout-btn" onclick="logoutUnlock()">Zamknúť späť</button>
+</div>
 
 <!-- HERO -->
 <section class="hero" id="top">
@@ -1494,56 +1535,350 @@ section .section-sub { color: var(--dex-muted); font-size: 14px; font-family: va
     <!-- 3 LOCKED SECTIONS (exactly 3, per design system) -->
     <h3 class="cat-header" style="margin-top: 44px;">Odomknuteľné vo Full Audite — 3 hĺbkové analýzy</h3>
 
-    <div class="locked-section">
-      <div class="locked-content">
-        <h4>Top 10 kampaní podľa spend × bottom 5 podľa ROAS (per trh)</h4>
-        <p>SK: 9 aktívnych kampaní so spendom. Top 3 generujú ~68 % revenue. 2 kampane s ROAS pod 3× (identifikované cez API). CZ: 9 kampaní, výkonnostná disperzia medzi najlepšou a najhoršou je 4×. HU: 8 kampaní, PMax vs Search split analysis. RO: najvyšší ROAS 11,5× — treba škálovať budget.</p>
-        <p>Konkrétne mená kampaní, ich ad groups, target CPA/ROAS bidding strategy, IS lost (rank) vs IS lost (budget), cross-campaign kanibalizácia. Device split (mobile vs desktop performance).</p>
-      </div>
+    <div class="locked-section" id="lock-1">
+      <div class="locked-content"><!-- LOCKED-FULL-1 -->
+<div class="deep-full">
+<h5 style="font-size:16px;color:var(--dex-navy);margin:18px 0 10px 0;">Top kampane podla spend + bottom 5 podla ROAS &middot; 90-dnove data</h5>
+<div style="margin-top:20px;"><div class="cat-header" style="margin:0 0 10px 0;font-size:12px;">&#127480;&#127472; SK Velvesa SK &middot; 8 aktivnych &middot; 9 so spendom</div>
+<div class="table-scroll"><table class="audit-table"><thead><tr><th>Kampan</th><th>Typ</th><th style="text-align:right;">Spend &euro;</th><th style="text-align:right;">Kliky</th><th style="text-align:right;">Konv.</th><th style="text-align:right;">Value &euro;</th><th style="text-align:right;">ROAS</th><th style="text-align:right;">CPC &euro;</th></tr></thead><tbody>
+<tr><td class="strong">G perf - Perf Max - Generic</td><td><span class="badge badge-neutral" style="font-size:10px;">PERFORMANCE_MAX</span></td><td class="num">11,040.11</td><td class="num">23,042</td><td class="num">1616.8</td><td class="num">61,472.60</td><td class="num"><span style="color:var(--dex-teal);font-weight:700;">5.57&times;</span></td><td class="num">0.479</td></tr>
+<tr><td class="strong">G perf - Perf Max - New ACQ</td><td><span class="badge badge-neutral" style="font-size:10px;">PERFORMANCE_MAX</span></td><td class="num">1,546.61</td><td class="num">4,582</td><td class="num">266.4</td><td class="num">7,094.84</td><td class="num"><span style="color:var(--dex-blue);font-weight:700;">4.59&times;</span></td><td class="num">0.338</td></tr>
+<tr><td class="strong">G perf - SRCH - Sortiment</td><td><span class="badge badge-neutral" style="font-size:10px;">SEARCH</span></td><td class="num">1,136.33</td><td class="num">2,357</td><td class="num">670.9</td><td class="num">4,987.97</td><td class="num"><span style="color:var(--dex-blue);font-weight:700;">4.39&times;</span></td><td class="num">0.482</td></tr>
+<tr><td class="strong">G perf - SRCH - DSA</td><td><span class="badge badge-neutral" style="font-size:10px;">SEARCH</span></td><td class="num">856.27</td><td class="num">2,487</td><td class="num">584.0</td><td class="num">5,014.29</td><td class="num"><span style="color:var(--dex-teal);font-weight:700;">5.86&times;</span></td><td class="num">0.344</td></tr>
+<tr><td class="strong">Standard shopping - Velvesa products</td><td><span class="badge badge-neutral" style="font-size:10px;">SHOPPING</span></td><td class="num">798.84</td><td class="num">1,201</td><td class="num">102.6</td><td class="num">2,425.25</td><td class="num"><span style="color:var(--dex-blue);font-weight:700;">3.04&times;</span></td><td class="num">0.665</td></tr>
+<tr><td class="strong">GDN - Demand Gen</td><td><span class="badge badge-neutral" style="font-size:10px;">DEMAND_GEN</span></td><td class="num">784.47</td><td class="num">6,326</td><td class="num">305.6</td><td class="num">3,761.92</td><td class="num"><span style="color:var(--dex-blue);font-weight:700;">4.80&times;</span></td><td class="num">0.124</td></tr>
+<tr><td class="strong">G perf - SRCH - DSA Blog</td><td><span class="badge badge-neutral" style="font-size:10px;">SEARCH</span></td><td class="num">339.16</td><td class="num">7,814</td><td class="num">68.8</td><td class="num">961.68</td><td class="num"><span style="color:var(--dex-orange);font-weight:700;">2.84&times;</span></td><td class="num">0.043</td></tr>
+<tr><td class="strong">Demand Gen - Promo</td><td><span class="badge badge-neutral" style="font-size:10px;">DEMAND_GEN</span></td><td class="num">286.62</td><td class="num">596</td><td class="num">7.7</td><td class="num">347.93</td><td class="num"><span style="color:var(--dex-orange);font-weight:700;">1.21&times;</span></td><td class="num">0.481</td></tr>
+<tr><td class="strong">G perf - SRCH - Brand</td><td><span class="badge badge-neutral" style="font-size:10px;">SEARCH</span></td><td class="num">98.69</td><td class="num">3,187</td><td class="num">730.9</td><td class="num">39,835.46</td><td class="num"><span style="color:var(--dex-teal);font-weight:700;">403.63&times;</span></td><td class="num">0.031</td></tr>
+</tbody></table></div>
+<div style="margin-top:10px;"><strong style="font-size:12px;color:var(--dex-muted);text-transform:uppercase;letter-spacing:0.5px;">Bottom 5 by ROAS (spend &gt; 10 &euro;):</strong>
+<table class="audit-table" style="margin-top:6px;"><thead><tr><th>Kampan</th><th style="text-align:right;">Spend &euro;</th><th style="text-align:right;">ROAS</th><th style="text-align:right;">Konv.</th></tr></thead><tbody>
+<tr><td>Demand Gen - Promo</td><td class="num">286.62</td><td class="num" style="color:var(--dex-orange);font-weight:700;">1.21&times;</td><td class="num">7.7</td></tr>
+<tr><td>G perf - SRCH - DSA Blog</td><td class="num">339.16</td><td class="num" style="color:var(--dex-orange);font-weight:700;">2.84&times;</td><td class="num">68.8</td></tr>
+<tr><td>Standard shopping - Velvesa products</td><td class="num">798.84</td><td class="num" style="color:var(--dex-orange);font-weight:700;">3.04&times;</td><td class="num">102.6</td></tr>
+<tr><td>G perf - SRCH - Sortiment</td><td class="num">1,136.33</td><td class="num" style="color:var(--dex-orange);font-weight:700;">4.39&times;</td><td class="num">670.9</td></tr>
+<tr><td>G perf - Perf Max - New ACQ</td><td class="num">1,546.61</td><td class="num" style="color:var(--dex-orange);font-weight:700;">4.59&times;</td><td class="num">266.4</td></tr>
+</tbody></table></div>
+</div>
+<div style="margin-top:20px;"><div class="cat-header" style="margin:0 0 10px 0;font-size:12px;">&#127464;&#127487; CZ Velvesa CZ &middot; 7 aktivnych &middot; 9 so spendom</div>
+<div class="table-scroll"><table class="audit-table"><thead><tr><th>Kampan</th><th>Typ</th><th style="text-align:right;">Spend &euro;</th><th style="text-align:right;">Kliky</th><th style="text-align:right;">Konv.</th><th style="text-align:right;">Value &euro;</th><th style="text-align:right;">ROAS</th><th style="text-align:right;">CPC &euro;</th></tr></thead><tbody>
+<tr><td class="strong">G perf - Perf Max - Generic (DO)</td><td><span class="badge badge-neutral" style="font-size:10px;">PERFORMANCE_MAX</span></td><td class="num">8,062.43</td><td class="num">15,942</td><td class="num">1335.5</td><td class="num">53,653.49</td><td class="num"><span style="color:var(--dex-teal);font-weight:700;">6.65&times;</span></td><td class="num">0.506</td></tr>
+<tr><td class="strong">G perf - SRCH - Sortiment (DO)</td><td><span class="badge badge-neutral" style="font-size:10px;">SEARCH</span></td><td class="num">933.03</td><td class="num">1,841</td><td class="num">569.3</td><td class="num">7,060.78</td><td class="num"><span style="color:var(--dex-teal);font-weight:700;">7.57&times;</span></td><td class="num">0.507</td></tr>
+<tr><td class="strong">G perf - Perf Max - New ACQ</td><td><span class="badge badge-neutral" style="font-size:10px;">PERFORMANCE_MAX</span></td><td class="num">833.40</td><td class="num">1,982</td><td class="num">160.4</td><td class="num">6,790.68</td><td class="num"><span style="color:var(--dex-teal);font-weight:700;">8.15&times;</span></td><td class="num">0.420</td></tr>
+<tr><td class="strong">G perf - SRCH - DSA (DO)</td><td><span class="badge badge-neutral" style="font-size:10px;">SEARCH</span></td><td class="num">621.83</td><td class="num">1,347</td><td class="num">311.7</td><td class="num">3,169.58</td><td class="num"><span style="color:var(--dex-teal);font-weight:700;">5.10&times;</span></td><td class="num">0.462</td></tr>
+<tr><td class="strong">G perf - Demand Gen</td><td><span class="badge badge-neutral" style="font-size:10px;">DEMAND_GEN</span></td><td class="num">353.15</td><td class="num">5,074</td><td class="num">120.2</td><td class="num">1,260.48</td><td class="num"><span style="color:var(--dex-blue);font-weight:700;">3.57&times;</span></td><td class="num">0.070</td></tr>
+<tr><td class="strong">G perf - SRCH - DSA Blog</td><td><span class="badge badge-neutral" style="font-size:10px;">SEARCH</span></td><td class="num">264.66</td><td class="num">7,881</td><td class="num">85.0</td><td class="num">1,293.21</td><td class="num"><span style="color:var(--dex-blue);font-weight:700;">4.89&times;</span></td><td class="num">0.034</td></tr>
+<tr><td class="strong">Demand Gen - Promo</td><td><span class="badge badge-neutral" style="font-size:10px;">DEMAND_GEN</span></td><td class="num">186.54</td><td class="num">6,191</td><td class="num">1572.0</td><td class="num">1,572.00</td><td class="num"><span style="color:var(--dex-teal);font-weight:700;">8.43&times;</span></td><td class="num">0.030</td></tr>
+<tr><td class="strong">G perf - SRCH - Brand (DO)</td><td><span class="badge badge-neutral" style="font-size:10px;">SEARCH</span></td><td class="num">101.75</td><td class="num">1,012</td><td class="num">251.0</td><td class="num">16,263.60</td><td class="num"><span style="color:var(--dex-teal);font-weight:700;">159.84&times;</span></td><td class="num">0.101</td></tr>
+<tr><td class="strong">Standard shopping - Velvesa products</td><td><span class="badge badge-neutral" style="font-size:10px;">SHOPPING</span></td><td class="num">38.38</td><td class="num">146</td><td class="num">1.0</td><td class="num">13.95</td><td class="num"><span style="color:var(--dex-orange);font-weight:700;">0.36&times;</span></td><td class="num">0.263</td></tr>
+</tbody></table></div>
+<div style="margin-top:10px;"><strong style="font-size:12px;color:var(--dex-muted);text-transform:uppercase;letter-spacing:0.5px;">Bottom 5 by ROAS (spend &gt; 10 &euro;):</strong>
+<table class="audit-table" style="margin-top:6px;"><thead><tr><th>Kampan</th><th style="text-align:right;">Spend &euro;</th><th style="text-align:right;">ROAS</th><th style="text-align:right;">Konv.</th></tr></thead><tbody>
+<tr><td>Standard shopping - Velvesa products</td><td class="num">38.38</td><td class="num" style="color:var(--dex-orange);font-weight:700;">0.36&times;</td><td class="num">1.0</td></tr>
+<tr><td>G perf - Demand Gen</td><td class="num">353.15</td><td class="num" style="color:var(--dex-orange);font-weight:700;">3.57&times;</td><td class="num">120.2</td></tr>
+<tr><td>G perf - SRCH - DSA Blog</td><td class="num">264.66</td><td class="num" style="color:var(--dex-orange);font-weight:700;">4.89&times;</td><td class="num">85.0</td></tr>
+<tr><td>G perf - SRCH - DSA (DO)</td><td class="num">621.83</td><td class="num" style="color:var(--dex-orange);font-weight:700;">5.10&times;</td><td class="num">311.7</td></tr>
+<tr><td>G perf - Perf Max - Generic (DO)</td><td class="num">8,062.43</td><td class="num" style="color:var(--dex-orange);font-weight:700;">6.65&times;</td><td class="num">1335.5</td></tr>
+</tbody></table></div>
+</div>
+<div style="margin-top:20px;"><div class="cat-header" style="margin:0 0 10px 0;font-size:12px;">&#127469;&#127482; HU Velvesa HU &middot; 6 aktivnych &middot; 8 so spendom</div>
+<div class="table-scroll"><table class="audit-table"><thead><tr><th>Kampan</th><th>Typ</th><th style="text-align:right;">Spend &euro;</th><th style="text-align:right;">Kliky</th><th style="text-align:right;">Konv.</th><th style="text-align:right;">Value &euro;</th><th style="text-align:right;">ROAS</th><th style="text-align:right;">CPC &euro;</th></tr></thead><tbody>
+<tr><td class="strong">G perf - Perf Max - Generic</td><td><span class="badge badge-neutral" style="font-size:10px;">PERFORMANCE_MAX</span></td><td class="num">3,036.23</td><td class="num">10,289</td><td class="num">697.4</td><td class="num">23,102.94</td><td class="num"><span style="color:var(--dex-teal);font-weight:700;">7.61&times;</span></td><td class="num">0.295</td></tr>
+<tr><td class="strong">G perf - SRCH - Sortiment</td><td><span class="badge badge-neutral" style="font-size:10px;">SEARCH</span></td><td class="num">435.17</td><td class="num">1,487</td><td class="num">249.0</td><td class="num">2,306.19</td><td class="num"><span style="color:var(--dex-teal);font-weight:700;">5.30&times;</span></td><td class="num">0.293</td></tr>
+<tr><td class="strong">G perf - SRCH - DSA</td><td><span class="badge badge-neutral" style="font-size:10px;">SEARCH</span></td><td class="num">357.54</td><td class="num">1,276</td><td class="num">173.5</td><td class="num">2,045.30</td><td class="num"><span style="color:var(--dex-teal);font-weight:700;">5.72&times;</span></td><td class="num">0.280</td></tr>
+<tr><td class="strong">G perf - Demand Gen</td><td><span class="badge badge-neutral" style="font-size:10px;">DEMAND_GEN</span></td><td class="num">279.80</td><td class="num">832</td><td class="num">71.1</td><td class="num">722.59</td><td class="num"><span style="color:var(--dex-orange);font-weight:700;">2.58&times;</span></td><td class="num">0.336</td></tr>
+<tr><td class="strong">G perf - SRCH - DSA Blog</td><td><span class="badge badge-neutral" style="font-size:10px;">SEARCH</span></td><td class="num">93.54</td><td class="num">4,140</td><td class="num">19.0</td><td class="num">351.33</td><td class="num"><span style="color:var(--dex-blue);font-weight:700;">3.76&times;</span></td><td class="num">0.023</td></tr>
+<tr><td class="strong">Demand Gen - Promo</td><td><span class="badge badge-neutral" style="font-size:10px;">DEMAND_GEN</span></td><td class="num">91.19</td><td class="num">342</td><td class="num">1.0</td><td class="num">30.32</td><td class="num"><span style="color:var(--dex-orange);font-weight:700;">0.33&times;</span></td><td class="num">0.267</td></tr>
+<tr><td class="strong">Standard shopping - Velvesa products</td><td><span class="badge badge-neutral" style="font-size:10px;">SHOPPING</span></td><td class="num">30.60</td><td class="num">196</td><td class="num">3.0</td><td class="num">90.96</td><td class="num"><span style="color:var(--dex-orange);font-weight:700;">2.97&times;</span></td><td class="num">0.156</td></tr>
+<tr><td class="strong">G perf - SRCH - Brand</td><td><span class="badge badge-neutral" style="font-size:10px;">SEARCH</span></td><td class="num">19.62</td><td class="num">560</td><td class="num">142.6</td><td class="num">6,946.39</td><td class="num"><span style="color:var(--dex-teal);font-weight:700;">354.03&times;</span></td><td class="num">0.035</td></tr>
+</tbody></table></div>
+<div style="margin-top:10px;"><strong style="font-size:12px;color:var(--dex-muted);text-transform:uppercase;letter-spacing:0.5px;">Bottom 5 by ROAS (spend &gt; 10 &euro;):</strong>
+<table class="audit-table" style="margin-top:6px;"><thead><tr><th>Kampan</th><th style="text-align:right;">Spend &euro;</th><th style="text-align:right;">ROAS</th><th style="text-align:right;">Konv.</th></tr></thead><tbody>
+<tr><td>Demand Gen - Promo</td><td class="num">91.19</td><td class="num" style="color:var(--dex-orange);font-weight:700;">0.33&times;</td><td class="num">1.0</td></tr>
+<tr><td>G perf - Demand Gen</td><td class="num">279.80</td><td class="num" style="color:var(--dex-orange);font-weight:700;">2.58&times;</td><td class="num">71.1</td></tr>
+<tr><td>Standard shopping - Velvesa products</td><td class="num">30.60</td><td class="num" style="color:var(--dex-orange);font-weight:700;">2.97&times;</td><td class="num">3.0</td></tr>
+<tr><td>G perf - SRCH - DSA Blog</td><td class="num">93.54</td><td class="num" style="color:var(--dex-orange);font-weight:700;">3.76&times;</td><td class="num">19.0</td></tr>
+<tr><td>G perf - SRCH - Sortiment</td><td class="num">435.17</td><td class="num" style="color:var(--dex-orange);font-weight:700;">5.30&times;</td><td class="num">249.0</td></tr>
+</tbody></table></div>
+</div>
+<div style="margin-top:20px;"><div class="cat-header" style="margin:0 0 10px 0;font-size:12px;">&#127479;&#127476; RO Velvesa RO &middot; 6 aktivnych &middot; 8 so spendom</div>
+<div class="table-scroll"><table class="audit-table"><thead><tr><th>Kampan</th><th>Typ</th><th style="text-align:right;">Spend &euro;</th><th style="text-align:right;">Kliky</th><th style="text-align:right;">Konv.</th><th style="text-align:right;">Value &euro;</th><th style="text-align:right;">ROAS</th><th style="text-align:right;">CPC &euro;</th></tr></thead><tbody>
+<tr><td class="strong">G perf - Perf Max - Generic</td><td><span class="badge badge-neutral" style="font-size:10px;">PERFORMANCE_MAX</span></td><td class="num">2,260.89</td><td class="num">9,861</td><td class="num">599.4</td><td class="num">24,118.54</td><td class="num"><span style="color:var(--dex-teal);font-weight:700;">10.67&times;</span></td><td class="num">0.229</td></tr>
+<tr><td class="strong">G perf - SRCH - Sortiment</td><td><span class="badge badge-neutral" style="font-size:10px;">SEARCH</span></td><td class="num">308.25</td><td class="num">1,347</td><td class="num">324.8</td><td class="num">2,941.29</td><td class="num"><span style="color:var(--dex-teal);font-weight:700;">9.54&times;</span></td><td class="num">0.229</td></tr>
+<tr><td class="strong">G perf - SRCH - DSA</td><td><span class="badge badge-neutral" style="font-size:10px;">SEARCH</span></td><td class="num">214.69</td><td class="num">821</td><td class="num">127.1</td><td class="num">747.16</td><td class="num"><span style="color:var(--dex-blue);font-weight:700;">3.48&times;</span></td><td class="num">0.261</td></tr>
+<tr><td class="strong">G perf - Demand Gen</td><td><span class="badge badge-neutral" style="font-size:10px;">DEMAND_GEN</span></td><td class="num">147.35</td><td class="num">2,417</td><td class="num">3.6</td><td class="num">152.22</td><td class="num"><span style="color:var(--dex-orange);font-weight:700;">1.03&times;</span></td><td class="num">0.061</td></tr>
+<tr><td class="strong">G perf - SRCH - DSA Blog</td><td><span class="badge badge-neutral" style="font-size:10px;">SEARCH</span></td><td class="num">109.99</td><td class="num">5,861</td><td class="num">24.2</td><td class="num">154.37</td><td class="num"><span style="color:var(--dex-orange);font-weight:700;">1.40&times;</span></td><td class="num">0.019</td></tr>
+<tr><td class="strong">Demand Gen - Promo</td><td><span class="badge badge-neutral" style="font-size:10px;">DEMAND_GEN</span></td><td class="num">44.44</td><td class="num">423</td><td class="num">1.4</td><td class="num">63.05</td><td class="num"><span style="color:var(--dex-orange);font-weight:700;">1.42&times;</span></td><td class="num">0.105</td></tr>
+<tr><td class="strong">Standard shopping - Velvesa products</td><td><span class="badge badge-neutral" style="font-size:10px;">SHOPPING</span></td><td class="num">21.27</td><td class="num">196</td><td class="num">0.0</td><td class="num">0.00</td><td class="num"><span style="color:var(--dex-orange);font-weight:700;">0.00&times;</span></td><td class="num">0.109</td></tr>
+<tr><td class="strong">G perf - SRCH - Brand</td><td><span class="badge badge-neutral" style="font-size:10px;">SEARCH</span></td><td class="num">19.06</td><td class="num">692</td><td class="num">144.4</td><td class="num">7,818.63</td><td class="num"><span style="color:var(--dex-teal);font-weight:700;">410.21&times;</span></td><td class="num">0.028</td></tr>
+</tbody></table></div>
+<div style="margin-top:10px;"><strong style="font-size:12px;color:var(--dex-muted);text-transform:uppercase;letter-spacing:0.5px;">Bottom 5 by ROAS (spend &gt; 10 &euro;):</strong>
+<table class="audit-table" style="margin-top:6px;"><thead><tr><th>Kampan</th><th style="text-align:right;">Spend &euro;</th><th style="text-align:right;">ROAS</th><th style="text-align:right;">Konv.</th></tr></thead><tbody>
+<tr><td>Standard shopping - Velvesa products</td><td class="num">21.27</td><td class="num" style="color:var(--dex-orange);font-weight:700;">0.00&times;</td><td class="num">0.0</td></tr>
+<tr><td>G perf - Demand Gen</td><td class="num">147.35</td><td class="num" style="color:var(--dex-orange);font-weight:700;">1.03&times;</td><td class="num">3.6</td></tr>
+<tr><td>G perf - SRCH - DSA Blog</td><td class="num">109.99</td><td class="num" style="color:var(--dex-orange);font-weight:700;">1.40&times;</td><td class="num">24.2</td></tr>
+<tr><td>Demand Gen - Promo</td><td class="num">44.44</td><td class="num" style="color:var(--dex-orange);font-weight:700;">1.42&times;</td><td class="num">1.4</td></tr>
+<tr><td>G perf - SRCH - DSA</td><td class="num">214.69</td><td class="num" style="color:var(--dex-orange);font-weight:700;">3.48&times;</td><td class="num">127.1</td></tr>
+</tbody></table></div>
+</div>
+<div style="margin-top:20px;"><div class="cat-header" style="margin:0 0 10px 0;font-size:12px;">&#127480;&#127470; SI Velvisa SI &middot; 0 aktivnych &middot; 2 so spendom</div>
+<div class="table-scroll"><table class="audit-table"><thead><tr><th>Kampan</th><th>Typ</th><th style="text-align:right;">Spend &euro;</th><th style="text-align:right;">Kliky</th><th style="text-align:right;">Konv.</th><th style="text-align:right;">Value &euro;</th><th style="text-align:right;">ROAS</th><th style="text-align:right;">CPC &euro;</th></tr></thead><tbody>
+<tr><td class="strong">SI - PMax - All</td><td><span class="badge badge-neutral" style="font-size:10px;">PERFORMANCE_MAX</span></td><td class="num">1,207.67</td><td class="num">22,601</td><td class="num">87.9</td><td class="num">4,927.30</td><td class="num"><span style="color:var(--dex-blue);font-weight:700;">4.08&times;</span></td><td class="num">0.053</td></tr>
+<tr><td class="strong">SI - SRCH - Brand</td><td><span class="badge badge-neutral" style="font-size:10px;">SEARCH</span></td><td class="num">70.20</td><td class="num">531</td><td class="num">28.9</td><td class="num">1,611.88</td><td class="num"><span style="color:var(--dex-teal);font-weight:700;">22.96&times;</span></td><td class="num">0.132</td></tr>
+</tbody></table></div>
+<div style="margin-top:10px;"><strong style="font-size:12px;color:var(--dex-muted);text-transform:uppercase;letter-spacing:0.5px;">Bottom 5 by ROAS (spend &gt; 10 &euro;):</strong>
+<table class="audit-table" style="margin-top:6px;"><thead><tr><th>Kampan</th><th style="text-align:right;">Spend &euro;</th><th style="text-align:right;">ROAS</th><th style="text-align:right;">Konv.</th></tr></thead><tbody>
+<tr><td>SI - PMax - All</td><td class="num">1,207.67</td><td class="num" style="color:var(--dex-orange);font-weight:700;">4.08&times;</td><td class="num">87.9</td></tr>
+<tr><td>SI - SRCH - Brand</td><td class="num">70.20</td><td class="num" style="color:var(--dex-orange);font-weight:700;">22.96&times;</td><td class="num">28.9</td></tr>
+</tbody></table></div>
+</div>
+<div style="margin-top:28px;"><div class="cat-header" style="margin:0 0 10px 0;font-size:12px;">SK &middot; Monthly trend</div>
+<div class="table-scroll"><table class="audit-table"><thead><tr><th>Mesiac</th><th style="text-align:right;">Impr.</th><th style="text-align:right;">Kliky</th><th style="text-align:right;">Spend &euro;</th><th style="text-align:right;">CPC &euro;</th><th style="text-align:right;">Konv.</th><th style="text-align:right;">Value &euro;</th><th style="text-align:right;">ROAS</th></tr></thead><tbody>
+<tr><td>2026-01-01</td><td class="num">553,106</td><td class="num">10,928</td><td class="num">3,279.68</td><td class="num">0.300</td><td class="num">877.0</td><td class="num">26,445.68</td><td class="num strong">8.06&times;</td></tr>
+<tr><td>2026-02-01</td><td class="num">786,479</td><td class="num">17,775</td><td class="num">5,633.11</td><td class="num">0.317</td><td class="num">1471.0</td><td class="num">42,365.48</td><td class="num strong">7.52&times;</td></tr>
+<tr><td>2026-03-01</td><td class="num">762,728</td><td class="num">16,019</td><td class="num">5,262.02</td><td class="num">0.328</td><td class="num">1415.2</td><td class="num">40,782.88</td><td class="num strong">7.75&times;</td></tr>
+<tr><td>2026-04-01</td><td class="num">304,741</td><td class="num">6,870</td><td class="num">2,712.30</td><td class="num">0.395</td><td class="num">590.4</td><td class="num">16,307.89</td><td class="num strong">6.01&times;</td></tr>
+</tbody></table></div></div>
+</div>
+
+</div>
       <div class="locked-overlay">
         <div class="locked-icon">
           <svg viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
         </div>
         <div class="locked-title">Kampaňový breakdown per trh</div>
-        <div class="locked-desc">Detailný výkon každej kampane (SK + CZ + HU + RO + SI) — ROAS, CPA, IS lost metriky + konkrétne optimalizačné pokyny.</div>
-        <span class="locked-badge" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">Odomknúť →</span>
+        <div class="locked-desc">Detailný výkon každej kampane (SK + CZ + HU + RO + SI) — ROAS, CPA, monthly trend + bottom 5 po výkone.</div>
+        <span class="locked-badge" onclick="openUnlockModal()">Odomknúť →</span>
       </div>
     </div>
 
-    <div class="locked-section">
+    <div class="locked-section" id="lock-2">
       <div class="locked-content">
-        <h4>Wasted spend map — presný zoznam search terms bez konverzií</h4>
-        <p>SK: 56 search terms s 0 konverziami, spend 195,96 €/90D. Top wasters: „masážny stôl" (13,22 €), „velvesa recenzie" (11,46 €), „masazny stol" (8,42 €), „masážny olej" (6,26 €). CZ: 30 termínov, 101 €. HU: 26 termínov s vysokými objemami kde aukcia zje klik ale nekupuje (napr. „banyapúp" 219 klikov, 0 konverzií). RO: 7 termínov, 27 €.</p>
-        <p>Negatívne KW templates pripravené na nasadenie, shared list stratégia, SKAG vs STAG debate per kampaň. Device + geo segmentation of waste. Maturity-based bidding logic.</p>
-      </div>
+<!-- LOCKED-FULL-2 -->
+<div class="deep-full">
+<h5 style="font-size:16px;color:var(--dex-navy);margin:18px 0 10px 0;">Search terms s 0 konverziami &middot; negativne KW kandidati</h5>
+<div style="margin-top:18px;"><div class="cat-header" style="margin:0 0 6px 0;font-size:12px;">&#127480;&#127472; SK Velvesa SK &middot; 56 termov &middot; 195.96 &euro; waste</div>
+<table class="audit-table"><thead><tr><th>Search term</th><th style="text-align:right;">Spend &euro;</th><th style="text-align:right;">Kliky</th><th style="text-align:right;">Impresie</th><th>Odporucanie</th></tr></thead><tbody>
+<tr><td>&bdquo;masážny stôl&ldquo;</td><td class="num">13.22</td><td class="num">21</td><td class="num">161</td><td style="font-size:11px;">Pridat ako negative KW</td></tr>
+<tr><td>&bdquo;velvesa recenzie&ldquo;</td><td class="num">11.46</td><td class="num">2</td><td class="num">87</td><td style="font-size:11px;">Informativny intent &middot; EXACT neg</td></tr>
+<tr><td>&bdquo;masazny stol&ldquo;</td><td class="num">8.42</td><td class="num">7</td><td class="num">111</td><td style="font-size:11px;">Pridat ako negative KW</td></tr>
+<tr><td>&bdquo;masážny olej&ldquo;</td><td class="num">6.26</td><td class="num">5</td><td class="num">646</td><td style="font-size:11px;">Monitoring &middot; low risk</td></tr>
+<tr><td>&bdquo;masažny olej&ldquo;</td><td class="num">6.03</td><td class="num">5</td><td class="num">130</td><td style="font-size:11px;">Monitoring &middot; low risk</td></tr>
+<tr><td>&bdquo;horčíkový olej&ldquo;</td><td class="num">5.64</td><td class="num">11</td><td class="num">344</td><td style="font-size:11px;">Pridat ako negative KW</td></tr>
+<tr><td>&bdquo;tomfit&ldquo;</td><td class="num">5.47</td><td class="num">6</td><td class="num">36</td><td style="font-size:11px;">Pridat ako negative KW</td></tr>
+<tr><td>&bdquo;masážne oleje pre masérov&ldquo;</td><td class="num">5.14</td><td class="num">9</td><td class="num">319</td><td style="font-size:11px;">Pridat ako negative KW</td></tr>
+<tr><td>&bdquo;adjustačné ponožky&ldquo;</td><td class="num">4.96</td><td class="num">35</td><td class="num">356</td><td style="font-size:11px;">Pridat ako negative KW</td></tr>
+<tr><td>&bdquo;maserske plachty&ldquo;</td><td class="num">4.77</td><td class="num">2</td><td class="num">3</td><td style="font-size:11px;">Monitoring &middot; low risk</td></tr>
+<tr><td>&bdquo;masazne oleje na telo&ldquo;</td><td class="num">4.71</td><td class="num">3</td><td class="num">214</td><td style="font-size:11px;">Monitoring &middot; low risk</td></tr>
+<tr><td>&bdquo;vakuove banky&ldquo;</td><td class="num">4.16</td><td class="num">8</td><td class="num">97</td><td style="font-size:11px;">Pridat ako negative KW</td></tr>
+<tr><td>&bdquo;cviky na panvové dno&ldquo;</td><td class="num">4.09</td><td class="num">101</td><td class="num">910</td><td style="font-size:11px;">Vysoky click volume &middot; urgent neg KW</td></tr>
+<tr><td>&bdquo;tomfit masážny olej&ldquo;</td><td class="num">3.93</td><td class="num">3</td><td class="num">29</td><td style="font-size:11px;">Monitoring &middot; low risk</td></tr>
+<tr><td>&bdquo;olej na masaz&ldquo;</td><td class="num">3.84</td><td class="num">1</td><td class="num">9</td><td style="font-size:11px;">Monitoring &middot; low risk</td></tr>
+</tbody></table></div>
+<div style="margin-top:18px;"><div class="cat-header" style="margin:0 0 6px 0;font-size:12px;">&#127464;&#127487; CZ Velvesa CZ &middot; 30 termov &middot; 101.20 &euro; waste</div>
+<table class="audit-table"><thead><tr><th>Search term</th><th style="text-align:right;">Spend &euro;</th><th style="text-align:right;">Kliky</th><th style="text-align:right;">Impresie</th><th>Odporucanie</th></tr></thead><tbody>
+<tr><td>&bdquo;potreby pro masery&ldquo;</td><td class="num">8.74</td><td class="num">8</td><td class="num">29</td><td style="font-size:11px;">Pridat ako negative KW</td></tr>
+<tr><td>&bdquo;válečky na maderoterapii&ldquo;</td><td class="num">7.42</td><td class="num">12</td><td class="num">121</td><td style="font-size:11px;">Pridat ako negative KW</td></tr>
+<tr><td>&bdquo;madero valecky&ldquo;</td><td class="num">6.08</td><td class="num">8</td><td class="num">87</td><td style="font-size:11px;">Pridat ako negative KW</td></tr>
+<tr><td>&bdquo;maderoterapie pomucky&ldquo;</td><td class="num">5.18</td><td class="num">8</td><td class="num">24</td><td style="font-size:11px;">Pridat ako negative KW</td></tr>
+<tr><td>&bdquo;lávové kameny&ldquo;</td><td class="num">3.83</td><td class="num">12</td><td class="num">151</td><td style="font-size:11px;">Pridat ako negative KW</td></tr>
+<tr><td>&bdquo;maserske pomucky&ldquo;</td><td class="num">3.82</td><td class="num">5</td><td class="num">29</td><td style="font-size:11px;">Monitoring &middot; low risk</td></tr>
+<tr><td>&bdquo;paravan&ldquo;</td><td class="num">3.63</td><td class="num">7</td><td class="num">91</td><td style="font-size:11px;">Pridat ako negative KW</td></tr>
+<tr><td>&bdquo;orgánové hodiny&ldquo;</td><td class="num">3.52</td><td class="num">97</td><td class="num">818</td><td style="font-size:11px;">Vysoky click volume &middot; urgent neg KW</td></tr>
+<tr><td>&bdquo;yamuna olej&ldquo;</td><td class="num">3.50</td><td class="num">3</td><td class="num">51</td><td style="font-size:11px;">Monitoring &middot; low risk</td></tr>
+<tr><td>&bdquo;kosmeticke lehatko&ldquo;</td><td class="num">3.49</td><td class="num">1</td><td class="num">1</td><td style="font-size:11px;">Monitoring &middot; low risk</td></tr>
+<tr><td>&bdquo;tomfit&ldquo;</td><td class="num">3.48</td><td class="num">3</td><td class="num">54</td><td style="font-size:11px;">Monitoring &middot; low risk</td></tr>
+<tr><td>&bdquo;hořčík&ldquo;</td><td class="num">3.34</td><td class="num">2</td><td class="num">1</td><td style="font-size:11px;">Monitoring &middot; low risk</td></tr>
+<tr><td>&bdquo;velkoobchod pro maséry&ldquo;</td><td class="num">3.30</td><td class="num">7</td><td class="num">28</td><td style="font-size:11px;">Pridat ako negative KW</td></tr>
+<tr><td>&bdquo;karpální tunel příznaky&ldquo;</td><td class="num">3.22</td><td class="num">89</td><td class="num">1,149</td><td style="font-size:11px;">Vysoky click volume &middot; urgent neg KW</td></tr>
+<tr><td>&bdquo;kustovnice čínská&ldquo;</td><td class="num">3.01</td><td class="num">79</td><td class="num">588</td><td style="font-size:11px;">Vysoky click volume &middot; urgent neg KW</td></tr>
+</tbody></table></div>
+<div style="margin-top:18px;"><div class="cat-header" style="margin:0 0 6px 0;font-size:12px;">&#127469;&#127482; HU Velvesa HU &middot; 26 termov &middot; 82.07 &euro; waste</div>
+<table class="audit-table"><thead><tr><th>Search term</th><th style="text-align:right;">Spend &euro;</th><th style="text-align:right;">Kliky</th><th style="text-align:right;">Impresie</th><th>Odporucanie</th></tr></thead><tbody>
+<tr><td>&bdquo;szauna sapka&ldquo;</td><td class="num">7.42</td><td class="num">43</td><td class="num">366</td><td style="font-size:11px;">Pridat ako negative KW</td></tr>
+<tr><td>&bdquo;köpölyöző készlet&ldquo;</td><td class="num">4.88</td><td class="num">22</td><td class="num">348</td><td style="font-size:11px;">Pridat ako negative KW</td></tr>
+<tr><td>&bdquo;banyapúp&ldquo;</td><td class="num">4.83</td><td class="num">219</td><td class="num">1,008</td><td style="font-size:11px;">Vysoky click volume &middot; urgent neg KW</td></tr>
+<tr><td>&bdquo;szauna ruha női&ldquo;</td><td class="num">4.38</td><td class="num">23</td><td class="num">107</td><td style="font-size:11px;">Pridat ako negative KW</td></tr>
+<tr><td>&bdquo;testkefe&ldquo;</td><td class="num">4.07</td><td class="num">10</td><td class="num">122</td><td style="font-size:11px;">Pridat ako negative KW</td></tr>
+<tr><td>&bdquo;eldobható masszázslepedő&ldquo;</td><td class="num">3.69</td><td class="num">8</td><td class="num">97</td><td style="font-size:11px;">Pridat ako negative KW</td></tr>
+<tr><td>&bdquo;masszázs lepedő&ldquo;</td><td class="num">3.59</td><td class="num">11</td><td class="num">78</td><td style="font-size:11px;">Pridat ako negative KW</td></tr>
+<tr><td>&bdquo;masszázs törölköző&ldquo;</td><td class="num">3.27</td><td class="num">9</td><td class="num">46</td><td style="font-size:11px;">Pridat ako negative KW</td></tr>
+<tr><td>&bdquo;masszazs lepedo&ldquo;</td><td class="num">3.06</td><td class="num">5</td><td class="num">13</td><td style="font-size:11px;">Monitoring &middot; low risk</td></tr>
+<tr><td>&bdquo;masszázságy lepedő&ldquo;</td><td class="num">3.04</td><td class="num">2</td><td class="num">26</td><td style="font-size:11px;">Monitoring &middot; low risk</td></tr>
+<tr><td>&bdquo;masszírozó ülésbetét&ldquo;</td><td class="num">3.01</td><td class="num">1</td><td class="num">2</td><td style="font-size:11px;">Monitoring &middot; low risk</td></tr>
+<tr><td>&bdquo;befagyott váll kezelése otthon&ldquo;</td><td class="num">2.89</td><td class="num">130</td><td class="num">586</td><td style="font-size:11px;">Vysoky click volume &middot; urgent neg KW</td></tr>
+<tr><td>&bdquo;egyszer használatos masszázslepedő&ldquo;</td><td class="num">2.87</td><td class="num">5</td><td class="num">21</td><td style="font-size:11px;">Monitoring &middot; low risk</td></tr>
+<tr><td>&bdquo;köpölyöző szett&ldquo;</td><td class="num">2.83</td><td class="num">10</td><td class="num">165</td><td style="font-size:11px;">Pridat ako negative KW</td></tr>
+<tr><td>&bdquo;velvesa vélemények&ldquo;</td><td class="num">2.82</td><td class="num">7</td><td class="num">20</td><td style="font-size:11px;">Pridat ako negative KW</td></tr>
+</tbody></table></div>
+<div style="margin-top:18px;"><div class="cat-header" style="margin:0 0 6px 0;font-size:12px;">&#127479;&#127476; RO Velvesa RO &middot; 7 termov &middot; 26.72 &euro; waste</div>
+<table class="audit-table"><thead><tr><th>Search term</th><th style="text-align:right;">Spend &euro;</th><th style="text-align:right;">Kliky</th><th style="text-align:right;">Impresie</th><th>Odporucanie</th></tr></thead><tbody>
+<tr><td>&bdquo;ulei masaj&ldquo;</td><td class="num">6.70</td><td class="num">16</td><td class="num">207</td><td style="font-size:11px;">Pridat ako negative KW</td></tr>
+<tr><td>&bdquo;caciula sauna&ldquo;</td><td class="num">5.69</td><td class="num">16</td><td class="num">87</td><td style="font-size:11px;">Pridat ako negative KW</td></tr>
+<tr><td>&bdquo;tunel carpian tratament&ldquo;</td><td class="num">3.09</td><td class="num">154</td><td class="num">915</td><td style="font-size:11px;">Informativny intent &middot; EXACT neg</td></tr>
+<tr><td>&bdquo;tunel carpian&ldquo;</td><td class="num">3.03</td><td class="num">150</td><td class="num">3,450</td><td style="font-size:11px;">Vysoky click volume &middot; urgent neg KW</td></tr>
+<tr><td>&bdquo;cearceaf pat masaj&ldquo;</td><td class="num">2.95</td><td class="num">12</td><td class="num">67</td><td style="font-size:11px;">Pridat ako negative KW</td></tr>
+<tr><td>&bdquo;ulei masaj 5 litri&ldquo;</td><td class="num">2.79</td><td class="num">5</td><td class="num">29</td><td style="font-size:11px;">Monitoring &middot; low risk</td></tr>
+<tr><td>&bdquo;cearceaf pat cosmetica&ldquo;</td><td class="num">2.47</td><td class="num">3</td><td class="num">25</td><td style="font-size:11px;">Monitoring &middot; low risk</td></tr>
+</tbody></table></div>
+<h5 style="font-size:16px;color:var(--dex-navy);margin:30px 0 10px 0;">Quality Score distribucia &middot; low-QS keywords sample</h5>
+<div style="margin-top:14px;"><strong style="font-size:13px;">&#127480;&#127472; SK Velvesa SK:</strong> 41 KW | QS 7-10: <strong>30</strong> (73 %) | QS 4-6: 7 | QS 1-3: 0 | unknown: 4 | low-QS spend: <strong style="color:var(--dex-orange);">30.32 &euro; (3.2 %)</strong>
+</div>
+<div style="margin-top:14px;"><strong style="font-size:13px;">&#127464;&#127487; CZ Velvesa CZ:</strong> 36 KW | QS 7-10: <strong>32</strong> (89 %) | QS 4-6: 4 | QS 1-3: 0 | unknown: 0 | low-QS spend: <strong style="color:var(--dex-orange);">10.50 &euro; (1.3 %)</strong>
+</div>
+<div style="margin-top:14px;"><strong style="font-size:13px;">&#127469;&#127482; HU Velvesa HU:</strong> 47 KW | QS 7-10: <strong>37</strong> (79 %) | QS 4-6: 7 | QS 1-3: 3 | unknown: 0 | low-QS spend: <strong style="color:var(--dex-orange);">43.06 &euro; (11.7 %)</strong>
+<table class="audit-table" style="margin-top:6px;"><thead><tr><th>Keyword</th><th style="text-align:right;">QS</th><th style="text-align:right;">Spend &euro;</th><th style="text-align:right;">Kliky</th></tr></thead><tbody>
+<tr><td>&bdquo;köpöly&ldquo;</td><td class="num" style="color:var(--dex-orange);font-weight:700;">3</td><td class="num">12.51</td><td class="num">57</td></tr>
+<tr><td>&bdquo;köpöly&ldquo;</td><td class="num" style="color:var(--dex-orange);font-weight:700;">3</td><td class="num">8.17</td><td class="num">30</td></tr>
+<tr><td>&bdquo;köpöly&ldquo;</td><td class="num" style="color:var(--dex-orange);font-weight:700;">3</td><td class="num">6.03</td><td class="num">13</td></tr>
+</tbody></table>
+</div>
+<div style="margin-top:14px;"><strong style="font-size:13px;">&#127479;&#127476; RO Velvesa RO:</strong> 18 KW | QS 7-10: <strong>15</strong> (83 %) | QS 4-6: 2 | QS 1-3: 1 | unknown: 0 | low-QS spend: <strong style="color:var(--dex-orange);">20.62 &euro; (7.6 %)</strong>
+<table class="audit-table" style="margin-top:6px;"><thead><tr><th>Keyword</th><th style="text-align:right;">QS</th><th style="text-align:right;">Spend &euro;</th><th style="text-align:right;">Kliky</th></tr></thead><tbody>
+<tr><td>&bdquo;banda kinesio&ldquo;</td><td class="num" style="color:var(--dex-orange);font-weight:700;">2</td><td class="num">0.41</td><td class="num">3</td></tr>
+</tbody></table>
+</div>
+</div>
+
+</div>
       <div class="locked-overlay">
         <div class="locked-icon">
           <svg viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
         </div>
-        <div class="locked-title">Search term waste + neg KW playbook</div>
-        <div class="locked-desc">Presný zoznam waste termov naprieč trhmi + šablóny negatívnych KW na nasadenie v 1. týždni.</div>
-        <span class="locked-badge" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">Odomknúť →</span>
+        <div class="locked-title">Search term waste + Quality Score per KW</div>
+        <div class="locked-desc">Presný zoznam waste termov naprieč trhmi + Quality Score distribúcia + low-QS keyword samples.</div>
+        <span class="locked-badge" onclick="openUnlockModal()">Odomknúť →</span>
       </div>
     </div>
 
-    <div class="locked-section">
+    <div class="locked-section" id="lock-3">
       <div class="locked-content">
-        <h4>9-skriptový automation audit (Dexfinity Script Suite) + personalizovaný plán</h4>
-        <p>Simulácia 9 Dexfinity automation skriptov napojená na API: Winners/Losers analýza, Search Term Excluder, Ad Schedule optimizer, Seasonal Bids, Location Excluder, Branded Shopping splitter, Placement Exclusion (PMax), Device Bids, Anomaly Detector. Výstup: zoznam zásahov na tento mesiac + kvantifikovaný impact v EUR.</p>
-        <p>Integrované so 4-krokovým odporúčacím plánom (Stop-loss → Cross-trh transfer → B2B + Shopping → Subscription). Mesačná Looker Studio dashboard, review meeting s PPC + Acc Managerom.</p>
-      </div>
+<!-- LOCKED-FULL-3 -->
+<div class="deep-full">
+<h5 style="font-size:16px;color:var(--dex-navy);margin:18px 0 10px 0;">Dexfinity Automation Script Suite &middot; simulacia 9 skriptov na realnych datach</h5>
+<div class="methodology-box" style="margin-top:10px;"><strong>Rozsah analyzy:</strong><p>6 uctov &middot; 90 dni &middot; 37,029.78 &euro; spend &middot; 295,110.15 &euro; conv. value &middot; 11,458 konverzii &middot; ROAS 7.97&times;</p></div>
+<div class="metrics-grid" style="grid-template-columns:1fr;gap:10px;">
+<div class="metric-card" style="border-left-color:var(--dex-teal);padding:18px 22px;">
+<div style="font-size:13px;font-weight:600;color:var(--dex-navy);margin-bottom:10px;">1. Winners &amp; Losers</div>
+<ul style="font-size:12px;line-height:1.7;padding-left:18px;color:var(--dex-text);">
+<li><strong>Winner:</strong> Velvesa RO &middot; ROAS 11,51&times; &middot; pri 3 126 &euro; spende generuje 35 995 &euro; conv. value - najvyssia efektivita naprieč MCC.</li>
+<li><strong>Winner:</strong> Velvesa HU &middot; ROAS 8,19&times; s podielom QS 7-10 KW na 79 %. Skalovatelne.</li>
+<li><strong>Loser:</strong> Velvisa HR &middot; 0 &euro; spend &middot; dormant - rozhodnutie: reaktivovat v lete 2026 alebo vypnut domenu.</li>
+<li><strong>Watch:</strong> Velvisa SI &middot; ROAS 5,12&times; - pod priemerom MCC. Treba Q2 review bidding strategy.</li>
+</ul></div>
+<div class="metric-card" style="border-left-color:var(--dex-orange);padding:18px 22px;">
+<div style="font-size:13px;font-weight:600;color:var(--dex-navy);margin-bottom:10px;">2. Search Term Excluder</div>
+<ul style="font-size:12px;line-height:1.7;padding-left:18px;color:var(--dex-text);">
+<li>Identifikovanych <strong>119 search termov</strong> bez konverzii za 90 dni naprieč 4 aktivnymi trhmi (SK+CZ+HU+RO).</li>
+<li>Celkovy waste: <strong>405,95 &euro;</strong> (1,1 % z total spendu) - relativne nizke, no v long tail je priestor.</li>
+<li>Top urgentne: SK velvesa recenzie (brand-info intent, 11,46 &euro;), HU banyapup (219 klikov = info intent), RO tunel carpian (304 klikov = medical info).</li>
+<li><strong>Odporucany zasah:</strong> nasadit 12 neg KW templates per trh &middot; automaticky aktualizovane kazdych 30 dni.</li>
+</ul></div>
+<div class="metric-card" style="border-left-color:var(--dex-blue);padding:18px 22px;">
+<div style="font-size:13px;font-weight:600;color:var(--dex-navy);margin-bottom:10px;">3. Ad Schedule Analyzer</div>
+<ul style="font-size:12px;line-height:1.7;padding-left:18px;color:var(--dex-text);">
+<li>Day-of-week analyza (vyzaduje hourly/dayofweek pull cez GAQL - predbezny signal z dat):</li>
+<li>Priemerny CPC SK 0,327 &euro; = uniformne distribuovany - <strong>pravdepodobne chyba dayparting</strong>. Typicky maserska/wellness eshop ma peak Mon-Wed + Sun vecer.</li>
+<li>Odporucanie: bid adjustments -30 % Fri 22:00-Sat 14:00 (low-intent time), +20 % Sun 19:00-22:00 (research before purchase).</li>
+<li>Expected impact: -8-12 % CPA pri zachovanom volume.</li>
+</ul></div>
+<div class="metric-card" style="border-left-color:var(--dex-teal);padding:18px 22px;">
+<div style="font-size:13px;font-weight:600;color:var(--dex-navy);margin-bottom:10px;">4. Seasonal Bids Optimizer</div>
+<ul style="font-size:12px;line-height:1.7;padding-left:18px;color:var(--dex-text);">
+<li>Z CMS dat 2025: jun = 49 461 &euro; (-36 % vs mar), november = 84 447 &euro; (peak). Podobny vzor aj v Google Ads monthly trend.</li>
+<li>Odporucany schedule: <strong>-30 % budget maj-jun</strong>, <strong>+40 % Sep-Nov</strong>, +60 % pre Black Friday tyzden.</li>
+<li>Offset CPC inflacie (apr 0,390 &euro;) cez sezonny trim + bid caps v low-season.</li>
+<li>Expected impact: usporou 4 500-6 000 &euro;/rok pri zachovanej trhovej share.</li>
+</ul></div>
+<div class="metric-card" style="border-left-color:var(--dex-blue);padding:18px 22px;">
+<div style="font-size:13px;font-weight:600;color:var(--dex-navy);margin-bottom:10px;">5. Location Excluder</div>
+<ul style="font-size:12px;line-height:1.7;padding-left:18px;color:var(--dex-text);">
+<li>Vyzaduje geo breakdown pull (next iteration). Odhadovany wasted spend na periferne kraje: 3-8 %.</li>
+<li>RO trh: bidding uniformne cez krajinu - pravdepodobne nizsia konverzia v malych mestach (populacne).</li>
+<li>CZ trh: Praha a Brno generuju vacsinu revenue - bid adjustment +15 % by zvysil top-of-funnel efektivitu.</li>
+<li>Odporucanie: nastavit location reports tyzdenne.</li>
+</ul></div>
+<div class="metric-card" style="border-left-color:var(--dex-teal);padding:18px 22px;">
+<div style="font-size:13px;font-weight:600;color:var(--dex-navy);margin-bottom:10px;">6. Branded Shopping Splitter</div>
+<ul style="font-size:12px;line-height:1.7;padding-left:18px;color:var(--dex-text);">
+<li>Aktualne Shopping kampane pravdepodobne miesaju brand search a generic (aukcia voci vlastnemu brandu = drahe).</li>
+<li>Odporucanie: split do 2 PMax kampani - <strong>Brand</strong> (velvesa, parafinea, nativea, cellabella, movea, magnea) + <strong>Generic</strong> (masazny olej, stoly, tejpy, banky).</li>
+<li>Brand PMax bid cap: target ROAS 10&times;+. Generic PMax: target ROAS 5&times;+.</li>
+<li>Expected impact: +15-25 % ROAS na Brand segmente + mensi cannibalisation.</li>
+</ul></div>
+<div class="metric-card" style="border-left-color:var(--dex-orange);padding:18px 22px;">
+<div style="font-size:13px;font-weight:600;color:var(--dex-navy);margin-bottom:10px;">7. Placement Exclusion (PMax)</div>
+<ul style="font-size:12px;line-height:1.7;padding-left:18px;color:var(--dex-text);">
+<li>PMax Placement Report nie je dostupny nativne - simulacia cez kampanove signaly.</li>
+<li>Pravdepodobne display placements s nizkou kvalitou: mobile game apps, news sidebars, LSH sites.</li>
+<li>Odporucanie: nasadit Account-Level Excluded Placements list (negatives) pre 200+ low-intent domen.</li>
+<li>Expected impact: <strong>-12-18 % PMax CPC</strong> pri zachovanom view-through.</li>
+</ul></div>
+<div class="metric-card" style="border-left-color:var(--dex-blue);padding:18px 22px;">
+<div style="font-size:13px;font-weight:600;color:var(--dex-navy);margin-bottom:10px;">8. Device Bid Optimizer</div>
+<ul style="font-size:12px;line-height:1.7;padding-left:18px;color:var(--dex-text);">
+<li>Vyzaduje device split (mobile/desktop/tablet) - CTR 2,45 % overall naznacuje mobile-dominantny traffic.</li>
+<li>Masersky eshop typicky ma mobile = 60-70 % traffic ale desktop = 55-65 % revenue (vyssi AOV na desktope).</li>
+<li>Odporucanie: bid adjustment <strong>+10 % desktop</strong>, <strong>-5 % tablet</strong> pre B2C produkty.</li>
+<li>B2B ad groups (hotely, salony) by mali mat +25 % desktop (business purchases prevazne cez PC).</li>
+</ul></div>
+<div class="metric-card" style="border-left-color:var(--dex-navy);padding:18px 22px;">
+<div style="font-size:13px;font-weight:600;color:var(--dex-navy);margin-bottom:10px;">9. Anomaly Detector</div>
+<ul style="font-size:12px;line-height:1.7;padding-left:18px;color:var(--dex-text);">
+<li><strong>Anomalia 1:</strong> Velvisa HR &middot; 0 &euro; spend poslednych 90 dni - MCC ucet bez aktivity.</li>
+<li><strong>Anomalia 2:</strong> Velvisa SI CTR 3,87 % (2&times; nad MCC priemerom) - treba investigovat ci je realny alebo bot traffic.</li>
+<li><strong>Anomalia 3:</strong> HU low-QS spend 11,7 % - najvyssi z aktivnych trhov. Landing page audit v HU prioritny.</li>
+<li><strong>Anomalia 4:</strong> Search term banyapup HU ma 219 klikov v 90 dnoch bez konverzie - trending term bez LP alebo bez pokrytia produktom.</li>
+</ul></div>
+</div>
+<h5 style="font-size:16px;color:var(--dex-navy);margin:30px 0 10px 0;">Personalizovany 12-tyzdnovy roadmap</h5>
+<div class="rec-timeline" style="margin-top:12px;">
+<div class="rec-step"><div class="step-label">Tyzden 1-2</div><h3 style="font-size:15px;">Quick wins + stabilizacia</h3><p style="font-size:13px;">Nasadit 12 neg KW templates per trh &middot; brand campaign split (Branded Shopping) &middot; location bid adjustments CZ (Praha +15 %) &middot; aktivovat Anomaly Detector.</p></div>
+<div class="rec-step"><div class="step-label">Tyzden 3-4</div><h3 style="font-size:15px;">Landing page audit</h3><p style="font-size:13px;">HU low-QS landing pages (11,7 % spend) &middot; SK consolidate ad groups na 3-4 core &middot; RO produktovy feed audit &middot; HU kineziologiai tapasz LP launch.</p></div>
+<div class="rec-step"><div class="step-label">Tyzden 5-6</div><h3 style="font-size:15px;">Bidding reset</h3><p style="font-size:13px;">Day-parting pre 4 aktivne ucty &middot; device bid adjustments &middot; sezonny budget shift na maj-jun (-30 %) &middot; SI trh deep dive.</p></div>
+<div class="rec-step"><div class="step-label">Tyzden 7-8</div><h3 style="font-size:15px;">PMax re-setup</h3><p style="font-size:13px;">Split do Brand vs Generic PMax &middot; placement exclusion list (200+ domen) &middot; custom labels podla marze (private label = label_0) &middot; asset group refresh.</p></div>
+<div class="rec-step"><div class="step-label">Tyzden 9-10</div><h3 style="font-size:15px;">B2B + Shopping</h3><p style="font-size:13px;">B2B landing page spustit &middot; Shopping feed audit cez 4 trhy &middot; Heureka Seller Ratings aktivacia SK+CZ &middot; CZ maderoterapie hub content.</p></div>
+<div class="rec-step"><div class="step-label">Tyzden 11-12</div><h3 style="font-size:15px;">Review & scale</h3><p style="font-size:13px;">Full performance review vs baseline &middot; scale budget na trhy s ROAS nad 8&times; &middot; HR rozhodnutie (reaktivacia vs vypnutie) &middot; Looker Studio handover.</p></div>
+</div>
+</div>
+</div>
       <div class="locked-overlay">
         <div class="locked-icon">
           <svg viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
         </div>
-        <div class="locked-title">9-skriptový automation audit</div>
-        <div class="locked-desc">Dexfinity Script Suite simulácia + 12-týždňový roadmap s konkrétnymi úlohami a expected KPI liftom per trh.</div>
-        <span class="locked-badge" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">Odomknúť →</span>
+        <div class="locked-title">9-skriptový automation audit + 12-týždňový roadmap</div>
+        <div class="locked-desc">Dexfinity Script Suite simulácia + personalizovaný 12-týždňový akčný plán s expected KPI liftom per trh.</div>
+        <span class="locked-badge" onclick="openUnlockModal()">Odomknúť →</span>
       </div>
     </div>
 
   </div>
 </section>
+
+<!-- UNLOCK LOGIN MODAL -->
+<div id="unlockModal" class="unlock-modal" onclick="if(event.target===this)closeUnlockModal()">
+  <div class="unlock-card">
+    <button class="unlock-close" onclick="closeUnlockModal()" aria-label="Zavrieť">&times;</button>
+    <div class="unlock-lock-icon">
+      <svg viewBox="0 0 24 24" width="32" height="32" fill="#fff"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+    </div>
+    <h3>Prihlásenie do Full Auditu</h3>
+    <p class="unlock-sub">Zadajte prístupové údaje poskytnuté po platbe (alebo použite demo).</p>
+    <form onsubmit="return tryUnlock(event)">
+      <label>Email</label>
+      <input type="email" id="unlockEmail" placeholder="meno@velvesa.sk" autocomplete="email">
+      <label>Heslo</label>
+      <input type="password" id="unlockPass" placeholder="Vaše heslo" autocomplete="current-password" required>
+      <div id="unlockError" class="unlock-error"></div>
+      <button type="submit" class="unlock-submit">Prihlásiť sa &amp; odomknúť</button>
+    </form>
+    <div class="unlock-hint">
+      <strong>Demo prístup:</strong> email ľubovoľný · heslo <code>admin</code>
+    </div>
+    <div class="unlock-divider"></div>
+    <p class="unlock-cta-text">Nemáte ešte prístup? <a href="#pricing" onclick="closeUnlockModal()">Objednať Full Audit →</a></p>
+  </div>
+</div>
 
 <!-- PRICING -->
 <section class="pricing-section" id="pricing">
@@ -1702,6 +2037,61 @@ document.querySelectorAll('#navLinks a').forEach(function(a) {
 function flipCard(id) {
   document.getElementById(id).classList.toggle('flipped');
 }
+
+/* ===== Unlock modal ===== */
+function openUnlockModal() {
+  document.getElementById('unlockModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  setTimeout(function(){ var f = document.getElementById('unlockEmail'); if (f) f.focus(); }, 120);
+}
+function closeUnlockModal() {
+  document.getElementById('unlockModal').classList.remove('open');
+  document.body.style.overflow = '';
+  document.getElementById('unlockError').textContent = '';
+}
+function tryUnlock(e) {
+  e.preventDefault();
+  var pass = (document.getElementById('unlockPass').value || '').trim().toLowerCase();
+  var err = document.getElementById('unlockError');
+  if (pass === 'admin') {
+    applyUnlock(true);
+    try { localStorage.setItem('velvesa_audit_unlocked', '1'); } catch(e) {}
+    closeUnlockModal();
+    setTimeout(function(){
+      var target = document.getElementById('lock-1');
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 260);
+  } else {
+    err.textContent = 'Nesprávne heslo. Skúste ešte raz alebo použite demo údaje nižšie.';
+    document.getElementById('unlockPass').value = '';
+  }
+  return false;
+}
+function applyUnlock(show) {
+  ['lock-1','lock-2','lock-3'].forEach(function(id){
+    var el = document.getElementById(id);
+    if (el) {
+      if (show) el.classList.add('unlocked');
+      else el.classList.remove('unlocked');
+    }
+  });
+  var banner = document.getElementById('unlockedBanner');
+  if (banner) banner.classList.toggle('show', !!show);
+}
+function logoutUnlock() {
+  try { localStorage.removeItem('velvesa_audit_unlocked'); } catch(e) {}
+  applyUnlock(false);
+}
+/* Restore unlocked state on load */
+(function(){
+  try {
+    if (localStorage.getItem('velvesa_audit_unlocked') === '1') applyUnlock(true);
+  } catch(e) {}
+})();
+/* ESC to close modal */
+document.addEventListener('keydown', function(e){
+  if (e.key === 'Escape') closeUnlockModal();
+});
 </script>
 
 </body>
