@@ -1,0 +1,1638 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Velvesa.sk — Multi-trh AI Ads Audit Deep | Dexfinity</title>
+<meta name="description" content="Externý AI Ads Audit pre velvesa.sk — 4 trhy (SK/CZ/HU/RO), quick wins, keyword potenciál, konkurencia, odporúčania.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Questrial&display=swap" rel="stylesheet">
+<style>
+:root {
+  --dex-blue: #0065F7;
+  --dex-navy: #05024E;
+  --dex-white: #ffffff;
+  --dex-light-bg: #F4F6FC;
+  --dex-blue-light: #E8F0FE;
+  --dex-blue-10: rgba(0, 101, 247, 0.1);
+  --dex-blue-20: rgba(0, 101, 247, 0.2);
+  --dex-navy-light: #0A0A6E;
+  --dex-text: #1A1A2E;
+  --dex-muted: #6B7280;
+  --dex-border: #E5E7EB;
+  --dex-teal: #16AB8B;
+  --dex-orange: #ff7f00;
+  --font-primary: 'Questrial', Arial, sans-serif;
+  --font-secondary: 'Poppins', Arial, sans-serif;
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --shadow: 0 2px 8px rgba(0, 101, 247, 0.08);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font-secondary); color: var(--dex-text); line-height: 1.6; background: var(--dex-white); font-feature-settings: "tnum"; }
+h1, h2, h3, h4 { font-family: var(--font-primary); }
+a { color: var(--dex-blue); }
+.container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+section { padding: 56px 0; }
+section.alt { background: var(--dex-light-bg); }
+section h2 { font-size: 28px; font-weight: 400; color: var(--dex-navy); margin-bottom: 6px; }
+section .section-sub { color: var(--dex-muted); font-size: 14px; font-family: var(--font-secondary); margin-bottom: 32px; }
+
+/* Urgency */
+.urgency { background: var(--dex-blue); color: var(--dex-white); text-align: center; padding: 12px 24px; font-size: 13px; font-weight: 600; font-family: var(--font-secondary); letter-spacing: 0.5px; }
+
+/* Nav */
+.nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.96); backdrop-filter: blur(12px); border-bottom: 1px solid var(--dex-border); padding: 10px 0; }
+.nav .container { display: flex; justify-content: space-between; align-items: center; }
+.nav-logo { height: 48px; }
+.nav-links { display: flex; gap: 28px; list-style: none; }
+.nav-links a { color: var(--dex-muted); text-decoration: none; font-size: 13px; font-weight: 500; font-family: var(--font-secondary); transition: color 0.2s; }
+.nav-links a:hover { color: var(--dex-blue); }
+.hamburger { display: none; background: none; border: none; cursor: pointer; padding: 8px; z-index: 1000; position: relative; }
+.hamburger span { display: block; width: 22px; height: 2px; background: var(--dex-navy); margin: 5px 0; border-radius: 2px; transition: transform 0.3s, opacity 0.3s; }
+.hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* Hero */
+.hero { background: var(--dex-navy); color: var(--dex-white); padding: 80px 40px 100px; position: relative; overflow: hidden; }
+.hero-badge { display: inline-block; background: var(--dex-blue-20); border: 1px solid rgba(0,101,247,0.3); border-radius: 50px; padding: 6px 18px; font-size: 12px; font-weight: 500; font-family: var(--font-secondary); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 24px; }
+.hero h1 { font-size: 44px; font-weight: 400; line-height: 1.15; max-width: 880px; margin-bottom: 16px; }
+.hero h1 span { color: var(--dex-blue); }
+.hero .tagline { font-family: var(--font-secondary); font-size: 14px; font-weight: 300; letter-spacing: 3px; text-transform: uppercase; color: var(--dex-blue); margin-bottom: 16px; }
+.hero .sub { font-size: 16px; color: rgba(255,255,255,0.7); max-width: 720px; margin-bottom: 40px; line-height: 1.6; }
+.hero-stats { display: flex; gap: 48px; flex-wrap: wrap; margin-top: 8px; }
+.hero-stat .num { font-size: 36px; font-weight: 700; font-family: var(--font-secondary); }
+.hero-stat .label { font-size: 11px; font-weight: 500; opacity: 0.6; text-transform: uppercase; letter-spacing: 1px; }
+.hero-stat .sublabel { font-size: 10px; color: var(--dex-orange); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
+.hero .circle-1 { position: absolute; width: 500px; height: 500px; border: 2px solid var(--dex-blue); border-radius: 50%; opacity: 0.12; top: -200px; right: -100px; }
+.hero .circle-2 { position: absolute; width: 300px; height: 300px; border: 2px solid var(--dex-blue); border-radius: 50%; opacity: 0.08; bottom: -100px; left: -80px; }
+.hero .circle-3 { position: absolute; width: 180px; height: 180px; background: var(--dex-blue); border-radius: 50%; opacity: 0.06; top: 60px; right: 200px; }
+.hero .container { position: relative; z-index: 2; }
+
+/* Exec summary floating card */
+.exec-summary { max-width: 1000px; margin: -64px auto 0; background: var(--dex-white); border-radius: var(--radius-lg); box-shadow: 0 12px 40px rgba(5,2,78,0.12); border: 1px solid var(--dex-border); border-top: 4px solid var(--dex-blue); padding: 36px 40px; position: relative; z-index: 3; }
+.exec-summary .es-label { font-size: 11px; font-weight: 600; color: var(--dex-blue); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px; }
+.exec-summary h2 { font-size: 22px; font-weight: 400; color: var(--dex-navy); margin-bottom: 20px; }
+.es-grid { display: grid; gap: 14px; }
+.es-item { display: grid; grid-template-columns: 40px 1fr; gap: 14px; align-items: start; padding: 14px; background: var(--dex-light-bg); border-radius: var(--radius-md); }
+.es-icon { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; color: var(--dex-white); font-family: var(--font-secondary); }
+.es-icon.danger { background: var(--dex-navy); }
+.es-icon.warning { background: var(--dex-blue); }
+.es-icon.info { background: var(--dex-teal); }
+.es-body h4 { font-size: 14px; font-weight: 600; color: var(--dex-navy); margin-bottom: 4px; }
+.es-body p { font-size: 13px; color: var(--dex-muted); line-height: 1.55; }
+
+/* Highlight */
+.highlight-box { background: var(--dex-navy); border-radius: var(--radius-lg); padding: 48px 40px; color: var(--dex-white); position: relative; overflow: hidden; margin-top: 24px; }
+.highlight-box .hb-circle { position: absolute; width: 280px; height: 280px; border: 2px solid var(--dex-blue); border-radius: 50%; opacity: 0.08; top: -120px; right: -60px; }
+.highlight-box .hb-pill { display: inline-block; background: var(--dex-blue-20); border: 1px solid rgba(0,101,247,0.3); border-radius: 50px; padding: 5px 14px; font-size: 11px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 16px; }
+.highlight-box h3 { font-size: 24px; font-weight: 400; color: var(--dex-white); margin-bottom: 8px; max-width: 720px; }
+.highlight-box p { font-size: 14px; color: rgba(255,255,255,0.7); max-width: 720px; line-height: 1.6; margin-bottom: 28px; }
+.hb-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
+.hb-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius-md); padding: 22px 20px; }
+.hb-card .hb-val { font-size: 28px; font-weight: 700; color: var(--dex-blue); font-family: var(--font-secondary); margin-bottom: 4px; }
+.hb-card .hb-val.teal { color: var(--dex-teal); }
+.hb-card .hb-val.orange { color: var(--dex-orange); }
+.hb-card .hb-label { font-size: 12px; font-weight: 600; color: var(--dex-white); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 2px; }
+.hb-card .hb-desc { font-size: 11px; color: rgba(255,255,255,0.5); line-height: 1.4; }
+
+/* Seasonality */
+.chart-wrap { margin-top: 28px; background: var(--dex-navy); border-radius: var(--radius-lg); padding: 36px 28px 28px; position: relative; overflow: hidden; }
+.chart-wrap .cw-circle1 { position: absolute; width: 300px; height: 300px; border: 2px solid var(--dex-blue); border-radius: 50%; opacity: 0.06; top: -120px; right: -60px; }
+.chart-wrap .cw-circle2 { position: absolute; width: 180px; height: 180px; border: 2px solid var(--dex-teal); border-radius: 50%; opacity: 0.08; bottom: -70px; left: -40px; }
+.chart-title { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 1px; }
+.chart-subtitle { font-size: 11px; color: rgba(255,255,255,0.35); margin-bottom: 20px; }
+.chart-legend-row { display: flex; gap: 24px; margin-top: 16px; flex-wrap: wrap; }
+.cleg { display: flex; align-items: center; gap: 6px; font-size: 12px; color: rgba(255,255,255,0.6); }
+.cleg-line { width: 20px; height: 3px; border-radius: 2px; }
+.cleg-line.l1 { background: var(--dex-teal); }
+.cleg-line.l2 { background: var(--dex-blue); }
+.cleg-line.l3 { background: var(--dex-orange); }
+.season-cards-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-top: 20px; }
+.season-card { background: var(--dex-white); border: 1px solid var(--dex-border); border-radius: var(--radius-md); padding: 20px; text-align: center; box-shadow: var(--shadow); border-left: 4px solid var(--dex-teal); }
+.season-card .sc-val { font-size: 28px; font-weight: 700; color: var(--dex-navy); font-family: var(--font-secondary); }
+.season-card .sc-label { font-size: 13px; font-weight: 600; color: var(--dex-navy); margin-top: 4px; }
+.season-card .sc-desc { font-size: 11px; color: var(--dex-muted); margin-top: 6px; }
+.season-card.urgent { border-left-color: var(--dex-orange); }
+.season-card.urgent .sc-val { color: var(--dex-orange); }
+.season-cta { margin-top: 28px; padding: 20px 28px; background: linear-gradient(135deg, var(--dex-orange), #e06600); border-radius: var(--radius-md); text-align: center; font-size: 16px; font-weight: 600; color: var(--dex-white); }
+
+/* Metric cards */
+.metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+.metric-card { background: var(--dex-white); border-radius: var(--radius-md); padding: 24px; box-shadow: var(--shadow); border-left: 4px solid var(--dex-blue); }
+.metric-card h3 { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--dex-muted); margin-bottom: 8px; font-family: var(--font-secondary); }
+.metric-card .value { font-size: 28px; font-weight: 700; color: var(--dex-navy); font-family: var(--font-secondary); }
+.metric-card .desc { font-size: 13px; color: var(--dex-muted); margin-top: 4px; }
+.metric-card.pain { border-left-color: var(--dex-navy); background: var(--dex-navy); color: var(--dex-white); }
+.metric-card.pain h3 { color: rgba(255,255,255,0.6); }
+.metric-card.pain .value { font-size: 15px; font-weight: 500; font-style: italic; color: var(--dex-white); }
+
+/* Badges */
+.badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; letter-spacing: 0.3px; font-family: var(--font-secondary); }
+.badge-critical { background: var(--dex-navy); color: var(--dex-white); }
+.badge-warning { background: var(--dex-blue-10); color: var(--dex-blue); }
+.badge-info { background: var(--dex-blue-light); color: var(--dex-blue); }
+.badge-ok { background: var(--dex-light-bg); color: var(--dex-navy); }
+.badge-positive { background: var(--dex-teal); color: var(--dex-white); }
+.badge-neutral { background: #F3F4F6; color: var(--dex-muted); }
+
+/* Findings */
+.finding { display: grid; grid-template-columns: 4px 1fr; margin-bottom: 14px; border-radius: var(--radius-md); overflow: hidden; background: var(--dex-white); box-shadow: var(--shadow); border: 1px solid var(--dex-border); }
+.finding .bar { min-height: 100%; }
+.finding .bar.high { background: var(--dex-navy); }
+.finding .bar.med { background: var(--dex-blue); }
+.finding .bar.low { background: rgba(0,101,247,0.3); }
+.finding .content { padding: 20px 24px; }
+.finding .content h4 { font-size: 15px; font-weight: 600; display: flex; align-items: center; gap: 10px; color: var(--dex-navy); flex-wrap: wrap; margin-bottom: 6px; }
+.finding .content p { font-size: 13px; color: var(--dex-muted); line-height: 1.6; }
+.finding .content .rec { margin-top: 10px; padding: 10px 14px; background: var(--dex-blue-10); border-radius: var(--radius-sm); font-size: 13px; color: var(--dex-navy); border-left: 3px solid var(--dex-blue); }
+.finding .content .rec strong { color: var(--dex-blue); }
+
+/* Audit Table */
+.audit-table { width: 100%; border-collapse: separate; border-spacing: 0; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--dex-border); margin-top: 16px; }
+.audit-table th { background: var(--dex-navy); color: var(--dex-white); padding: 14px 16px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; text-align: left; font-family: var(--font-secondary); }
+.audit-table td { padding: 13px 16px; font-size: 13px; border-bottom: 1px solid var(--dex-border); background: var(--dex-white); }
+.audit-table tr:last-child td { border-bottom: none; }
+.audit-table tr:hover td { background: var(--dex-light-bg); }
+.audit-table td.num { font-variant-numeric: tabular-nums; text-align: right; }
+.audit-table td.strong { font-weight: 600; color: var(--dex-navy); }
+.audit-table .row-client { background: var(--dex-blue-10) !important; }
+.audit-table .row-client td { background: var(--dex-blue-10); font-weight: 600; }
+
+/* Bar chart horizontal */
+.barchart { margin-top: 16px; }
+.barchart-row { display: grid; grid-template-columns: 180px 1fr 80px; gap: 14px; align-items: center; margin-bottom: 10px; font-size: 13px; }
+.barchart-row .bc-label { color: var(--dex-navy); font-weight: 500; }
+.barchart-row .bc-bar { height: 22px; background: var(--dex-light-bg); border-radius: 4px; overflow: hidden; position: relative; }
+.barchart-row .bc-fill { height: 100%; background: linear-gradient(90deg, var(--dex-blue), var(--dex-navy)); border-radius: 4px; }
+.barchart-row .bc-fill.client { background: linear-gradient(90deg, var(--dex-teal), #0e8a6f); }
+.barchart-row .bc-val { text-align: right; font-weight: 600; color: var(--dex-navy); font-variant-numeric: tabular-nums; }
+
+/* Highlight boxes (color-coded) */
+.highlight-positive, .highlight-warning, .highlight-negative, .highlight-neutral { padding: 16px 20px; border-radius: var(--radius-md); margin: 16px 0; border-left: 4px solid; }
+.highlight-positive { background: rgba(22,171,139,0.08); border-color: var(--dex-teal); color: var(--dex-navy); }
+.highlight-warning { background: rgba(255,127,0,0.08); border-color: var(--dex-orange); color: var(--dex-navy); }
+.highlight-negative { background: rgba(5,2,78,0.06); border-color: var(--dex-navy); color: var(--dex-navy); }
+.highlight-neutral { background: var(--dex-blue-10); border-color: var(--dex-blue); color: var(--dex-navy); }
+.highlight-positive strong, .highlight-warning strong, .highlight-negative strong, .highlight-neutral strong { display: block; margin-bottom: 4px; font-size: 13px; }
+.highlight-positive p, .highlight-warning p, .highlight-negative p, .highlight-neutral p { font-size: 13px; line-height: 1.6; }
+
+/* Priority summary */
+.priority-summary { margin-top: 36px; padding: 28px; background: var(--dex-white); border-radius: var(--radius-lg); box-shadow: var(--shadow); border: 1px solid var(--dex-border); }
+.priority-summary h3 { font-size: 16px; font-weight: 600; color: var(--dex-navy); margin-bottom: 16px; font-family: var(--font-secondary); }
+.priority-legend { display: flex; gap: 20px; margin-bottom: 12px; flex-wrap: wrap; font-size: 11px; color: var(--dex-muted); }
+.leg-dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block; margin-right: 4px; vertical-align: middle; }
+.leg-dot.p1 { background: var(--dex-navy); }
+.leg-dot.p2 { background: var(--dex-blue); }
+.leg-dot.p3 { background: var(--dex-blue); opacity: 0.35; }
+.priority-row { display: grid; grid-template-columns: 14px 1fr auto auto; gap: 12px; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--dex-border); }
+.priority-row:last-child { border-bottom: none; }
+.priority-row .p-dot { width: 12px; height: 12px; border-radius: 50%; }
+.priority-row .p-text { font-size: 13px; color: var(--dex-navy); font-weight: 500; }
+.p-impact { background: var(--dex-navy); color: var(--dex-white); font-size: 10px; font-weight: 600; padding: 3px 10px; border-radius: 20px; min-width: 70px; text-align: center; font-family: var(--font-secondary); }
+.p-impact.med { background: var(--dex-blue); }
+.p-impact.low { background: var(--dex-blue-10); color: var(--dex-blue); }
+.p-effort { background: var(--dex-light-bg); color: var(--dex-navy); font-size: 10px; font-weight: 600; padding: 3px 10px; border-radius: 20px; min-width: 70px; text-align: center; font-family: var(--font-secondary); }
+
+/* CTA box */
+.cta-box { margin-top: 24px; padding: 18px; background: var(--dex-teal); border-radius: var(--radius-md); text-align: center; transition: background 0.2s; }
+.cta-box:hover { background: #129577; }
+.cta-box a { color: var(--dex-white); text-decoration: none; font-weight: 600; font-size: 14px; }
+
+/* Cat headers */
+.cat-header { font-size: 13px; font-weight: 600; color: var(--dex-navy); text-transform: uppercase; letter-spacing: 1.5px; margin: 36px 0 16px; padding-bottom: 8px; border-bottom: 2px solid var(--dex-blue); display: inline-block; font-family: var(--font-secondary); }
+
+/* Methodology box */
+.methodology-box { background: var(--dex-blue-10); border-radius: var(--radius-md); padding: 16px 20px; margin-bottom: 24px; border-left: 3px solid var(--dex-blue); }
+.methodology-box strong { font-size: 13px; color: var(--dex-navy); display: block; margin-bottom: 4px; }
+.methodology-box p { font-size: 12px; color: var(--dex-muted); line-height: 1.7; }
+
+/* Summary box */
+.summary-box { background: var(--dex-navy); color: var(--dex-white); border-radius: var(--radius-lg); padding: 48px; margin: 48px 0 24px; position: relative; overflow: hidden; }
+.summary-box .circle-dec { position: absolute; border: 2px solid var(--dex-blue); border-radius: 50%; opacity: 0.1; }
+.summary-box .circle-dec.c1 { width: 300px; height: 300px; top: -120px; right: -60px; }
+.summary-box .circle-dec.c2 { width: 200px; height: 200px; bottom: -80px; left: -40px; }
+.summary-box h2 { color: var(--dex-white) !important; font-size: 24px; margin-bottom: 20px; position: relative; }
+.summary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; position: relative; }
+.summary-item { text-align: center; padding: 24px 16px; background: rgba(255,255,255,0.06); border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.1); }
+.summary-item .val { font-size: 32px; font-weight: 700; color: var(--dex-blue); font-family: var(--font-secondary); }
+.summary-item .label-title { font-size: 14px; font-weight: 600; margin-top: 4px; }
+.summary-item .desc { font-size: 12px; opacity: 0.6; margin-top: 4px; }
+
+/* Timeline */
+.rec-timeline { position: relative; padding-left: 36px; margin-top: 24px; }
+.rec-timeline::before { content: ''; position: absolute; left: 12px; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--dex-blue), var(--dex-navy)); }
+.rec-step { position: relative; margin-bottom: 36px; }
+.rec-step::before { content: ''; position: absolute; left: -36px; top: 4px; width: 24px; height: 24px; border-radius: 50%; background: var(--dex-blue); border: 3px solid var(--dex-white); box-shadow: 0 0 0 2px var(--dex-blue); }
+.rec-step .step-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; color: var(--dex-blue); margin-bottom: 6px; font-family: var(--font-secondary); }
+.rec-step h3 { font-size: 18px; color: var(--dex-navy); margin-bottom: 8px; }
+.rec-step p { font-size: 14px; color: var(--dex-muted); margin-bottom: 8px; }
+.rec-step ul { padding-left: 20px; }
+.rec-step ul li { font-size: 14px; color: var(--dex-text); margin-bottom: 6px; }
+
+/* Locked */
+.locked-section { position: relative; overflow: hidden; border-radius: var(--radius-lg); margin-bottom: 24px; }
+.locked-content { filter: blur(6px); -webkit-filter: blur(6px); pointer-events: none; user-select: none; opacity: 0.5; padding: 32px; background: var(--dex-light-bg); border: 1px solid var(--dex-border); border-radius: var(--radius-lg); }
+.locked-content h4 { color: var(--dex-navy); font-size: 16px; margin-bottom: 8px; }
+.locked-content p { font-size: 13px; color: var(--dex-muted); }
+.locked-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(244,246,252,0.3); backdrop-filter: blur(2px); z-index: 10; border-radius: var(--radius-lg); }
+.locked-icon { width: 64px; height: 64px; background: var(--dex-navy); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; box-shadow: 0 8px 32px rgba(5,2,78,0.2); }
+.locked-icon svg { width: 28px; height: 28px; fill: var(--dex-white); }
+.locked-title { font-size: 18px; font-weight: 600; color: var(--dex-navy); margin-bottom: 6px; text-align: center; font-family: var(--font-secondary); }
+.locked-desc { font-size: 14px; color: var(--dex-muted); text-align: center; max-width: 420px; padding: 0 16px; }
+.locked-badge { display: inline-block; background: var(--dex-navy); color: var(--dex-white); font-size: 11px; font-weight: 600; padding: 4px 14px; border-radius: 20px; letter-spacing: 0.5px; margin-top: 12px; cursor: pointer; }
+.locked-badge:hover { background: var(--dex-blue); }
+
+/* Pricing */
+.pricing-section { background: var(--dex-navy); padding: 80px 0; position: relative; overflow: hidden; }
+.pricing-section .p-circle1 { position: absolute; width: 400px; height: 400px; border: 2px solid var(--dex-blue); border-radius: 50%; opacity: 0.06; top: -200px; left: -100px; }
+.pricing-section .p-circle2 { position: absolute; width: 300px; height: 300px; border: 2px solid var(--dex-blue); border-radius: 50%; opacity: 0.05; bottom: -150px; right: -80px; }
+.pricing-header { text-align: center; margin-bottom: 32px; position: relative; }
+.pricing-header h2 { color: var(--dex-white) !important; font-size: 32px; margin-bottom: 10px; }
+.pricing-header p { color: rgba(255,255,255,0.6); font-size: 15px; max-width: 620px; margin: 0 auto; }
+.wasted-spend-box { max-width: 900px; margin: 0 auto 40px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius-lg); padding: 28px; position: relative; }
+.wasted-spend-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
+.ws-item { text-align: center; }
+.ws-val { font-size: 28px; font-weight: 700; font-family: var(--font-secondary); }
+.ws-val.white { color: var(--dex-white); }
+.ws-val.orange { color: var(--dex-orange); }
+.ws-val.teal { color: var(--dex-teal); }
+.ws-label { font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+.ws-context { margin-top: 22px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 14px; color: rgba(255,255,255,0.7); text-align: center; line-height: 1.6; }
+.ws-context .urgency-line { color: var(--dex-orange); font-weight: 600; margin-top: 8px; font-size: 13px; }
+.pricing-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 900px; margin: 0 auto; position: relative; }
+.pricing-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius-lg); padding: 36px 32px; position: relative; transition: transform 0.3s, box-shadow 0.3s; height: 100%; }
+.pricing-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,101,247,0.15); }
+.flip-card .pricing-card:hover { transform: none; }
+.pricing-card.featured { background: rgba(0,101,247,0.12); border-color: var(--dex-blue); }
+.pricing-card .card-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--dex-blue); color: var(--dex-white); font-size: 11px; font-weight: 600; padding: 4px 16px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.5px; font-family: var(--font-secondary); }
+.pricing-card h3 { color: var(--dex-white); font-size: 20px; margin-bottom: 10px; }
+.pricing-card .price { margin-bottom: 20px; }
+.pricing-card .price .old { font-size: 16px; color: rgba(255,255,255,0.35); text-decoration: line-through; margin-right: 8px; font-family: var(--font-secondary); }
+.pricing-card .price .current { font-size: 36px; font-weight: 700; color: var(--dex-white); font-family: var(--font-secondary); }
+.pricing-card .price .period { font-size: 14px; color: rgba(255,255,255,0.4); margin-left: 4px; }
+.pricing-card .descrip { font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 18px; line-height: 1.55; }
+.pricing-card .features { list-style: none; margin-bottom: 24px; }
+.pricing-card .features li { font-size: 13px; color: rgba(255,255,255,0.75); padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; align-items: flex-start; gap: 10px; }
+.pricing-card .features .check { color: var(--dex-teal); font-weight: 700; flex-shrink: 0; }
+.pricing-cta { display: block; text-align: center; padding: 14px 28px; border-radius: var(--radius-sm); font-size: 15px; font-weight: 600; text-decoration: none; cursor: pointer; border: none; width: 100%; font-family: var(--font-secondary); }
+.pricing-cta.primary { background: var(--dex-blue); color: var(--dex-white); }
+.pricing-cta.primary:hover { background: #0052cc; }
+.pricing-cta.secondary { background: transparent; color: var(--dex-white); border: 1px solid rgba(255,255,255,0.3); }
+.pricing-cta.secondary:hover { border-color: var(--dex-white); }
+.pricing-note { text-align: center; color: rgba(255,255,255,0.4); font-size: 12px; margin-top: 22px; line-height: 1.6; position: relative; }
+.pricing-note a { color: rgba(255,255,255,0.7); }
+
+/* Flip card */
+.flip-card { perspective: 1200px; }
+.flip-card-inner { position: relative; width: 100%; transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); transform-style: preserve-3d; }
+.flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
+.flip-front, .flip-back { backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: var(--radius-lg); width: 100%; }
+.flip-front { position: relative; z-index: 2; }
+.flip-back { position: absolute; top: 0; left: 0; height: 100%; transform: rotateY(180deg); z-index: 1; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); padding: 32px; display: flex; flex-direction: column; justify-content: center; border-radius: var(--radius-lg); }
+.flip-card.featured .flip-back { background: rgba(0,101,247,0.12); border-color: var(--dex-blue); }
+.flip-back h4 { color: var(--dex-white); font-size: 18px; margin-bottom: 14px; }
+.iban-table { width: 100%; font-size: 13px; margin-bottom: 16px; }
+.iban-table td { padding: 7px 0; color: rgba(255,255,255,0.75); border-bottom: 1px solid rgba(255,255,255,0.08); }
+.iban-table td:first-child { color: rgba(255,255,255,0.45); width: 35%; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; }
+.iban-copy-btn { background: rgba(255,255,255,0.1); color: var(--dex-white); border: 1px solid rgba(255,255,255,0.2); padding: 2px 8px; border-radius: 4px; font-size: 11px; cursor: pointer; margin-left: 8px; font-family: var(--font-secondary); }
+.iban-copy-btn:hover { background: rgba(255,255,255,0.2); }
+.after-payment { background: linear-gradient(135deg, var(--dex-blue), #0052cc); padding: 14px; border-radius: var(--radius-md); font-size: 12px; color: var(--dex-white); margin-bottom: 14px; line-height: 1.5; }
+.after-payment strong { display: block; margin-bottom: 4px; }
+.contact-line { font-size: 12px; color: rgba(255,255,255,0.6); margin-bottom: 14px; text-align: center; }
+.contact-line a { color: rgba(255,255,255,0.85); text-decoration: none; }
+.unflip-btn { background: transparent; color: rgba(255,255,255,0.5); border: 1px solid rgba(255,255,255,0.2); padding: 10px; border-radius: var(--radius-sm); font-size: 12px; cursor: pointer; width: 100%; font-family: var(--font-secondary); }
+.unflip-btn:hover { color: var(--dex-white); border-color: rgba(255,255,255,0.5); }
+
+/* Footer */
+.footer { background: var(--dex-navy); color: var(--dex-white); padding: 48px 40px; text-align: center; position: relative; overflow: hidden; }
+.footer .circle-f { position: absolute; border: 1px solid var(--dex-blue); border-radius: 50%; opacity: 0.08; }
+.footer .circle-f.cf1 { width: 240px; height: 240px; top: -80px; left: -40px; }
+.footer .circle-f.cf2 { width: 180px; height: 180px; bottom: -60px; right: -20px; }
+.footer-logo { height: 64px; margin-bottom: 20px; }
+.footer p { opacity: 0.5; font-size: 13px; margin-bottom: 8px; }
+.footer .go-beyond { font-size: 12px; font-weight: 300; letter-spacing: 3px; text-transform: uppercase; color: var(--dex-blue); margin-top: 12px; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hamburger { display: block; }
+  .nav-links { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; height: 100dvh; background: var(--dex-white); flex-direction: column; align-items: center; justify-content: center; gap: 0; z-index: 999; padding: 80px 40px 40px; }
+  .nav-links.open { display: flex !important; }
+  .nav-links li { width: 100%; text-align: center; border-bottom: 1px solid var(--dex-border); }
+  .nav-links a { display: block; padding: 16px 0; font-size: 16px; color: var(--dex-navy) !important; }
+  .hero h1 { font-size: 30px; }
+  .hero { padding: 48px 24px 72px; }
+  .hero-stats { gap: 24px; }
+  .exec-summary { padding: 28px 24px; margin: -48px 16px 0; }
+  .highlight-box { padding: 32px 24px; }
+  .highlight-box h3 { font-size: 20px; }
+  .summary-grid { grid-template-columns: 1fr 1fr; }
+  .summary-box { padding: 32px 24px; }
+  .metrics-grid { grid-template-columns: 1fr 1fr; }
+  .pricing-cards { grid-template-columns: 1fr; }
+  .wasted-spend-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
+  .barchart-row { grid-template-columns: 120px 1fr 60px; gap: 8px; font-size: 12px; }
+  .audit-table th, .audit-table td { padding: 10px 12px; font-size: 12px; }
+  .table-scroll { overflow-x: auto; }
+}
+.table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+/* Print */
+@media print {
+  .nav, .urgency, .pricing-section, .locked-overlay, .cta-box { display: none; }
+  body { font-size: 11px; }
+  .hero { background: var(--dex-white); color: var(--dex-navy); padding: 32px 0; }
+  .hero h1 { color: var(--dex-navy); font-size: 24px; }
+  .hero .sub { color: var(--dex-muted); }
+  .locked-content { filter: none; opacity: 1; }
+  section { padding: 24px 0; page-break-inside: avoid; }
+  .summary-box, .highlight-box, .chart-wrap { background: var(--dex-light-bg); color: var(--dex-navy); }
+  .summary-box h2, .highlight-box h3 { color: var(--dex-navy) !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- URGENCY BAR -->
+<div class="urgency">
+  Sezóna máj–jún = historicky slabé mesiace (−45% vs peak) · Každý týždeň bez optimalizácie = stratený obrat, ktorý už nedobehnete
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="container">
+    <a href="#top"><img src="https://www.dexfinity.com/wp-content/uploads/2021/03/Logo-Small-Light-Landscape@2x.png" alt="Dexfinity" class="nav-logo"></a>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#highlight">Príležitosť</a></li>
+      <li><a href="#sezona">Sezóna</a></li>
+      <li><a href="#trhy">Multi-trh</a></li>
+      <li><a href="#seo">SEO &amp; PPC</a></li>
+      <li><a href="#konkurencia">Konkurencia</a></li>
+      <li><a href="#odporucania">Odporúčania</a></li>
+      <li><a href="#pricing" style="color: var(--dex-blue); font-weight: 600;">Cenník</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="circle-1"></div>
+  <div class="circle-2"></div>
+  <div class="circle-3"></div>
+  <div class="container">
+    <div class="hero-badge">External Ads Audit — 690 €</div>
+    <div class="tagline">Go Beyond · Multi-trh Audit</div>
+    <h1>Velvesa.sk — audit <span>pre 4 trhy</span> v masérskej a wellness kategórii</h1>
+    <p class="sub">Externá analýza bez prístupov do účtov. Google Search Data + publikované reklamy + web + biznis kontext. Cieľ: identifikovať kde ste silní, kde vám konkurencia je ušla, a ktoré trhy majú nevyužitý potenciál pri súčasnom produktovom portfóliu.</p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="num">4</div>
+        <div class="label">Trhy v auditu</div>
+        <div class="sublabel">SK · CZ · HU · RO</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num">1 182</div>
+        <div class="label">Organických KW</div>
+        <div class="sublabel">spolu naprieč 4 trhmi</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num">9 413</div>
+        <div class="label">Mesačné návštevy</div>
+        <div class="sublabel">Google search estimate</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num">−97 %</div>
+        <div class="label">Paid traffic</div>
+        <div class="sublabel">Sep&nbsp;25 → Apr&nbsp;26 (SK)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXEC SUMMARY -->
+<div class="exec-summary" id="exec">
+  <div class="es-label">Executive Summary</div>
+  <h2>4 najdôležitejšie zistenia z externého auditu</h2>
+  <div class="es-grid">
+    <div class="es-item">
+      <div class="es-icon danger">1</div>
+      <div class="es-body">
+        <h4>Paid visibility kolaps: Sep 2025 → Apr 2026 na SK</h4>
+        <p>Ahrefs eviduje pokles paid traffic z 1 291 klikov/mes (Sep 25) na 37 klikov/mes (Apr 26) — <strong>−97 %</strong>. Paralelne CPC +73 % (podľa interných dát). Konkurent fabulo.sk má v SK aukcii približne 4× viac paid traffic ako Velvesa.</p>
+      </div>
+    </div>
+    <div class="es-item">
+      <div class="es-icon warning">2</div>
+      <div class="es-body">
+        <h4>Quick wins v CZ, HU, RO: produkty × dopyt × bez top-3 pozície</h4>
+        <p>Tri najväčšie cross-trhové príležitosti: CZ „maderoterapie" 8&nbsp;400/mes, HU „kineziológiai tapasz" 5&nbsp;000/mes, RO „pat masaj" + „banda kinesiologica" 4&nbsp;900/mes spolu — produkty v katalógu sú, rankujete ale nízko alebo vôbec.</p>
+      </div>
+    </div>
+    <div class="es-item">
+      <div class="es-icon info">3</div>
+      <div class="es-body">
+        <h4>HU je najefektívnejší trh — podľa pomeru DR 26 → 2 691 traffic</h4>
+        <p>Maďarská doména má druhú najvyššiu návštevnosť z 4 trhov, pri polovičnom počte org. KW oproti SK. Medzi top pozíciami napr. „masszázságy" (2&nbsp;400/mes, #3) a „maderoterápia" (#1). Škálovanie HU je nízkorizikové — základ už stojí.</p>
+      </div>
+    </div>
+    <div class="es-item">
+      <div class="es-icon warning">4</div>
+      <div class="es-body">
+        <h4>Private label (Parafinea, Nativea, CellaBella, Movea V6, Magnea) = nevyužitý ad angle</h4>
+        <p>Vlastné značky sú hlavný marža-driver (44,9 % → 38,4 %), no v paid kampaniach sa riešia ako generické produkty. Branded PMax feed + osobná značka ako kreatívny angle = nižší CPC (menšia aukcia) + vyššia marža.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HIGHLIGHT SECTION -->
+<section id="highlight">
+  <div class="container">
+    <h2>Produkt × Dopyt × Bez kampane = Príležitosť</h2>
+    <p class="section-sub">Jedna ukážková matica z cross-trhovej analýzy — kde sú produkty v katalógu, dopyt na trhu, a Velvesa sa z top pozícií stratila.</p>
+    <div class="highlight-box">
+      <div class="hb-circle"></div>
+      <span class="hb-pill">Najsilnejší cross-trhový insight</span>
+      <h3>CZ „maderoterapie" 8 400/mes — na SK ste #1 na podkategóriu, v ČR nerankujete na hlavnom termíne</h3>
+      <p>Velvesa.sk dominuje SK SERP na „maderoterapia valceky" (200/mes, pozícia 1). Velvesa.cz zatiaľ pokrýva len podkategóriu „maderoterapie válečky" (100/mes, #1) — hlavný termín „maderoterapie" (8&nbsp;400/mes) je bez viditeľnosti. Rovnaký produkt, rovnaký obsah, iný jazyk = priamy transfer know-how.</p>
+      <div class="hb-cards">
+        <div class="hb-card">
+          <div class="hb-val orange">8 400</div>
+          <div class="hb-label">CZ mes. dopyt</div>
+          <div class="hb-desc">„maderoterapie" · KD 0 · CPC 25 Kč</div>
+        </div>
+        <div class="hb-card">
+          <div class="hb-val teal">#1 SK</div>
+          <div class="hb-label">Máte know-how</div>
+          <div class="hb-desc">SK pozícia 1 na podkategóriu</div>
+        </div>
+        <div class="hb-card">
+          <div class="hb-val">38 %</div>
+          <div class="hb-label">SERP je voľný</div>
+          <div class="hb-desc">KD 0/100 · minimum konkurencie</div>
+        </div>
+        <div class="hb-card">
+          <div class="hb-val orange">5 600</div>
+          <div class="hb-label">SK ekvivalent</div>
+          <div class="hb-desc">„maderoterapia" SK · Velvesa mimo top 10</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="highlight-warning" style="margin-top: 24px;">
+      <strong>SERP overenie (Google Search Data · Apríl 2026):</strong>
+      <p>CZ „maderoterapie": TOP 3 obsadzujú rehabilitacni-potreby.cz, madeva.cz, madero-shop.cz. Velvesa.cz nie je v top 10 pre hlavný termín. Ranking existuje len na 8 derivátoch (válečky, pomůcky, recenze). Stratégia: samostatná landing page „Maderoterapie — nástroje a postup" + Shopping Ads na produktový feed.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SEASONALITY -->
+<section class="alt" id="sezona">
+  <div class="container">
+    <h2>Sezónnosť kategórie — máj–jún = HISTORICKY SLABÉ mesiace</h2>
+    <p class="section-sub">Zdroj: Google Search Data and Trends (dotazy „masážny olej", „masážny stôl", „tejpy", „akupresúrna podložka") + interné CMS revenue dáta 2025–2026.</p>
+    <div class="chart-wrap">
+      <div class="cw-circle1"></div>
+      <div class="cw-circle2"></div>
+      <div class="chart-title">Sezónna krivka dopytu &amp; Velvesa revenue</div>
+      <div class="chart-subtitle">Index 0–100 (max = November) · SR trh · Apr 2025 – Apr 2026</div>
+      <svg viewBox="0 0 1000 320" style="width: 100%; height: auto; margin-top: 8px;" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="tealGrad" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0%" stop-color="#16AB8B" stop-opacity="0.35"/>
+            <stop offset="100%" stop-color="#16AB8B" stop-opacity="0"/>
+          </linearGradient>
+          <linearGradient id="blueGrad" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0%" stop-color="#0065F7" stop-opacity="0.18"/>
+            <stop offset="100%" stop-color="#0065F7" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <!-- Grid -->
+        <line x1="60" x2="980" y1="40" y2="40" stroke="rgba(255,255,255,0.06)"/>
+        <line x1="60" x2="980" y1="100" y2="100" stroke="rgba(255,255,255,0.06)"/>
+        <line x1="60" x2="980" y1="160" y2="160" stroke="rgba(255,255,255,0.06)"/>
+        <line x1="60" x2="980" y1="220" y2="220" stroke="rgba(255,255,255,0.06)"/>
+        <line x1="60" x2="980" y1="280" y2="280" stroke="rgba(255,255,255,0.08)"/>
+        <!-- Y axis labels -->
+        <text x="50" y="44" fill="rgba(255,255,255,0.3)" font-size="10" text-anchor="end">100</text>
+        <text x="50" y="104" fill="rgba(255,255,255,0.3)" font-size="10" text-anchor="end">75</text>
+        <text x="50" y="164" fill="rgba(255,255,255,0.3)" font-size="10" text-anchor="end">50</text>
+        <text x="50" y="224" fill="rgba(255,255,255,0.3)" font-size="10" text-anchor="end">25</text>
+        <text x="50" y="284" fill="rgba(255,255,255,0.3)" font-size="10" text-anchor="end">0</text>
+        <!-- PEAK zone (Sep-Dec) -->
+        <rect x="534" y="35" width="258" height="250" fill="#16AB8B" fill-opacity="0.06" />
+        <text x="663" y="28" fill="#16AB8B" font-size="10" font-weight="600" text-anchor="middle" letter-spacing="1">PEAK · Sep–Dec</text>
+        <!-- NOW marker -->
+        <rect x="862" y="35" width="60" height="250" fill="#ff7f00" fill-opacity="0.08" />
+        <text x="892" y="28" fill="#ff7f00" font-size="10" font-weight="600" text-anchor="middle" letter-spacing="1">STE TU</text>
+        <!-- Area fill for main line (Search dopyt) -->
+        <path d="M 90 195 L 160 175 L 230 205 L 300 165 L 370 155 L 440 120 L 510 85 L 580 70 L 650 50 L 720 110 L 790 160 L 860 200 L 920 225 L 920 285 L 90 285 Z" fill="url(#tealGrad)"/>
+        <!-- Main line (search dopyt) -->
+        <polyline points="90,195 160,175 230,205 300,165 370,155 440,120 510,85 580,70 650,50 720,110 790,160 860,200 920,225" fill="none" stroke="#16AB8B" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <!-- Secondary line (Velvesa revenue index) dashed -->
+        <polyline points="90,180 160,170 230,200 300,170 370,150 440,130 510,95 580,75 650,55 720,110 790,170 860,215 920,240" fill="none" stroke="#0065F7" stroke-width="2.5" stroke-dasharray="5,4" stroke-linecap="round"/>
+        <!-- Tertiary line (Velvesa paid traffic) orange -->
+        <polyline points="90,245 160,230 230,175 300,220 370,225 440,140 510,215 580,210 650,215 720,240 790,260 860,275 920,278" fill="none" stroke="#ff7f00" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+        <!-- STE TU dot -->
+        <circle cx="892" cy="225" r="6" fill="#ff7f00">
+          <animate attributeName="r" values="6;10;6" dur="1.8s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="1;0.5;1" dur="1.8s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="892" cy="225" r="3" fill="#fff"/>
+        <!-- X axis months -->
+        <g fill="rgba(255,255,255,0.4)" font-size="11" text-anchor="middle">
+          <text x="90" y="305">Apr</text>
+          <text x="160" y="305">Máj</text>
+          <text x="230" y="305">Jún</text>
+          <text x="300" y="305">Júl</text>
+          <text x="370" y="305">Aug</text>
+          <text x="440" y="305">Sep</text>
+          <text x="510" y="305">Okt</text>
+          <text x="580" y="305">Nov</text>
+          <text x="650" y="305">Dec</text>
+          <text x="720" y="305">Jan</text>
+          <text x="790" y="305">Feb</text>
+          <text x="860" y="305">Mar</text>
+          <text x="920" y="305">Apr</text>
+        </g>
+      </svg>
+      <div class="chart-legend-row">
+        <div class="cleg"><span class="cleg-line l1"></span>Search dopyt (masáž + wellness KW)</div>
+        <div class="cleg"><span class="cleg-line l2"></span>Velvesa CMS revenue (index)</div>
+        <div class="cleg"><span class="cleg-line l3"></span>Velvesa paid traffic (Ahrefs est.)</div>
+      </div>
+    </div>
+    <div class="season-cards-row">
+      <div class="season-card urgent">
+        <div class="sc-val">−45 %</div>
+        <div class="sc-label">Máj–Jún vs peak</div>
+        <div class="sc-desc">Historicky najslabšie mesiace. V 2025 revenue padlo z 86 596 € (mar) na 49 461 € (jún).</div>
+      </div>
+      <div class="season-card">
+        <div class="sc-val">+67 %</div>
+        <div class="sc-label">Nov 2025 peak</div>
+        <div class="sc-desc">Najvyšší mesačný revenue za rok (84 447 €). Sezónna príprava musí začať minimálne 6 týždňov vopred.</div>
+      </div>
+      <div class="season-card urgent">
+        <div class="sc-val">−12 269 €</div>
+        <div class="sc-label">Január 2026 gap</div>
+        <div class="sc-desc">Prvý mesiac 2026 už pod úrovňou 2025. Trend pokračoval vo februári (−14 425 €) a marci (−24 689 €).</div>
+      </div>
+      <div class="season-card">
+        <div class="sc-val">+73 %</div>
+        <div class="sc-label">CPC rast 2025→2026</div>
+        <div class="sc-desc">0,226 € (jún 25) → 0,390 € (apr 26). Priamo driver zhoršeného PNO pri konštantnom budgete.</div>
+      </div>
+    </div>
+    <div class="season-cta">
+      Máj štart je o 2 týždne — každý deň bez optimalizácie = stratené objednávky v najslabšej časti roka.
+    </div>
+  </div>
+</section>
+
+<!-- O KLIENTOVI -->
+<section id="klient">
+  <div class="container">
+    <h2>O klientovi — Velvesa.sk</h2>
+    <p class="section-sub">Lipt, s.r.o. · Horné Srnie · Eshop pre profesionálnych masérov, fyzioterapeutov, wellness prevádzky. Rebrand z masér.sk (2021).</p>
+    <div class="metrics-grid">
+      <div class="metric-card">
+        <h3>Ročný obrat 2025</h3>
+        <div class="value">806 345 €</div>
+        <div class="desc">Celý rok SR · CMS data. Prvý rok nad 1 M € historicky prekonaný už pred pandémiou.</div>
+      </div>
+      <div class="metric-card" style="border-left-color: var(--dex-orange);">
+        <h3>YTD rast 2026</h3>
+        <div class="value" style="color: var(--dex-orange);">−20,1 %</div>
+        <div class="desc">Jan–Apr 2026 vs 2025 · Slovensko. Pokles najmä v počte objednávok (VOC −28,5 %).</div>
+      </div>
+      <div class="metric-card" style="border-left-color: var(--dex-teal);">
+        <h3>Maržovosť YTD</h3>
+        <div class="value" style="color: var(--dex-teal);">44,9 %</div>
+        <div class="desc">+6,5 pp vs 2025 (38,4 %) · lepší produktový mix, viac private label, menej zliav.</div>
+      </div>
+      <div class="metric-card pain">
+        <h3>Hlavný pain</h3>
+        <div class="value">„CPC rastie, objednávky padajú, aktivujeme v máji-júni keď je dopyt najnižší."</div>
+      </div>
+      <div class="metric-card">
+        <h3>Trhy</h3>
+        <div class="value" style="font-size: 20px;">SK · CZ · HU · RO</div>
+        <div class="desc">4 domény, 4 jazyky. Biznis reporting primárne pre SR; CZ/HU/RO sú blind spot.</div>
+      </div>
+      <div class="metric-card">
+        <h3>Katalóg</h3>
+        <div class="value">1 500+</div>
+        <div class="desc">Produktov skladom. 5 hlavných kategórií: Masáž, Wellness, Šport &amp; fyzio, Beauty, Zdravie.</div>
+      </div>
+      <div class="metric-card">
+        <h3>Private label</h3>
+        <div class="value" style="font-size: 19px;">5 vlastných značiek</div>
+        <div class="desc">Parafinea, Nativea, CellaBella, Movea V6, Magnea. Driver vyššej marže.</div>
+      </div>
+      <div class="metric-card">
+        <h3>Social proof</h3>
+        <div class="value" style="font-size: 22px;">4,8/5 · 250k+</div>
+        <div class="desc">Google rating · odoslané objednávky za 15 rokov. Silný základ pre Seller Ratings.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MULTI-TRH DASHBOARD -->
+<section class="alt" id="trhy">
+  <div class="container">
+    <h2>Multi-trh dashboard — 4 domény, 4 aukcie, 4 rozdielne pozície</h2>
+    <p class="section-sub">Snapshot Apríl 2026. Zdroj: Google Search Data + publikované reklamy. „Paid cost" je Ahrefs estimate — slúži na relatívne porovnanie, nie na absolútnu hodnotu.</p>
+
+    <div class="methodology-box">
+      <strong>Metodológia a obmedzenia:</strong>
+      <p>Audit pracuje so 4 nezávislými lokálnymi doménami (velvesa.sk, velvesa.cz, velvesa.hu, velvesa.ro) a ich lokálnymi SERPy. Ahrefs paid cost/traffic je modelový odhad, nie reálny spend. Biznis audit od klienta pokrýva iba SR trh; CZ/HU/RO reporting nebol v scope, preto sú označené ako „blind spot" pre interný pohľad. Všetky negatívne findings overené 2× (variácie názvu + Google site: search).</p>
+    </div>
+
+    <div class="table-scroll">
+    <table class="audit-table">
+      <thead>
+        <tr>
+          <th>Trh / doména</th>
+          <th style="text-align: right;">DR</th>
+          <th style="text-align: right;">Org KW</th>
+          <th style="text-align: right;">Org traffic/mes</th>
+          <th style="text-align: right;">Paid KW</th>
+          <th style="text-align: right;">Paid traffic/mes</th>
+          <th style="text-align: right;">Paid cost/mes*</th>
+          <th>Stav</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="row-client">
+          <td class="strong">🇸🇰 velvesa.sk</td>
+          <td class="num">24</td>
+          <td class="num">321</td>
+          <td class="num">3 052</td>
+          <td class="num">17</td>
+          <td class="num">37</td>
+          <td class="num">~1 391 $</td>
+          <td><span class="badge badge-warning">Paid kolaps</span></td>
+        </tr>
+        <tr>
+          <td class="strong">🇨🇿 velvesa.cz</td>
+          <td class="num">26</td>
+          <td class="num">398</td>
+          <td class="num">1 611</td>
+          <td class="num">29</td>
+          <td class="num">90</td>
+          <td class="num">~1 808 $</td>
+          <td><span class="badge badge-info">Najaktívnejší paid</span></td>
+        </tr>
+        <tr>
+          <td class="strong">🇭🇺 velvesa.hu</td>
+          <td class="num">26</td>
+          <td class="num">252</td>
+          <td class="num">2 691</td>
+          <td class="num">9</td>
+          <td class="num">29</td>
+          <td class="num">~369 $</td>
+          <td><span class="badge badge-positive">Najefektívnejší SEO</span></td>
+        </tr>
+        <tr>
+          <td class="strong">🇷🇴 velvesa.ro</td>
+          <td class="num">14</td>
+          <td class="num">211</td>
+          <td class="num">2 059</td>
+          <td class="num">16</td>
+          <td class="num">146</td>
+          <td class="num">~1 673 $</td>
+          <td><span class="badge badge-warning">Slabšia autorita</span></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <p style="font-size: 11px; color: var(--dex-muted); margin-top: 8px;">* Paid cost je Ahrefs odhad na základe aukčných dát v lokálnych SERPy — nie reálny spend. Slúži na cross-trhové porovnanie intenzity.</p>
+
+    <h3 class="cat-header" style="margin-top: 40px;">Dopyt po kategóriách — search volume per trh (vybrané core KW)</h3>
+    <div class="barchart">
+      <div class="barchart-row">
+        <div class="bc-label">🇨🇿 maderoterapie</div>
+        <div class="bc-bar"><div class="bc-fill" style="width: 94%;"></div></div>
+        <div class="bc-val">8 400</div>
+      </div>
+      <div class="barchart-row">
+        <div class="bc-label">🇨🇿 akupresurní podložka</div>
+        <div class="bc-bar"><div class="bc-fill" style="width: 98%;"></div></div>
+        <div class="bc-val">8 800</div>
+      </div>
+      <div class="barchart-row">
+        <div class="bc-label">🇸🇰 maderoterapia</div>
+        <div class="bc-bar"><div class="bc-fill" style="width: 62%;"></div></div>
+        <div class="bc-val">5 600</div>
+      </div>
+      <div class="barchart-row">
+        <div class="bc-label">🇭🇺 kineziológiai tapasz</div>
+        <div class="bc-bar"><div class="bc-fill" style="width: 56%;"></div></div>
+        <div class="bc-val">5 000</div>
+      </div>
+      <div class="barchart-row">
+        <div class="bc-label">🇷🇴 banda kinesiologica</div>
+        <div class="bc-bar"><div class="bc-fill" style="width: 31%;"></div></div>
+        <div class="bc-val">2 800</div>
+      </div>
+      <div class="barchart-row">
+        <div class="bc-label">🇭🇺 masszázságy</div>
+        <div class="bc-bar"><div class="bc-fill client" style="width: 29%;"></div></div>
+        <div class="bc-val">2 600</div>
+      </div>
+      <div class="barchart-row">
+        <div class="bc-label">🇷🇴 pat masaj</div>
+        <div class="bc-bar"><div class="bc-fill" style="width: 23%;"></div></div>
+        <div class="bc-val">2 100</div>
+      </div>
+      <div class="barchart-row">
+        <div class="bc-label">🇷🇴 ventuze masaj</div>
+        <div class="bc-bar"><div class="bc-fill" style="width: 18%;"></div></div>
+        <div class="bc-val">1 600</div>
+      </div>
+      <div class="barchart-row">
+        <div class="bc-label">🇷🇴 masa de masaj</div>
+        <div class="bc-bar"><div class="bc-fill" style="width: 12%;"></div></div>
+        <div class="bc-val">1 100</div>
+      </div>
+      <div class="barchart-row">
+        <div class="bc-label">🇸🇰 akupresúrna podložka</div>
+        <div class="bc-bar"><div class="bc-fill" style="width: 11%;"></div></div>
+        <div class="bc-val">1 000</div>
+      </div>
+      <div class="barchart-row">
+        <div class="bc-label">🇨🇿 masážní olej</div>
+        <div class="bc-bar"><div class="bc-fill" style="width: 11%;"></div></div>
+        <div class="bc-val">1 000</div>
+      </div>
+      <div class="barchart-row">
+        <div class="bc-label">🇭🇺 masszőr kellékek</div>
+        <div class="bc-bar"><div class="bc-fill" style="width: 3%;"></div></div>
+        <div class="bc-val">250</div>
+      </div>
+    </div>
+    <p style="font-size: 11px; color: var(--dex-muted); margin-top: 12px;">Zelené prúžky = kľúčové slovo kde Velvesa aktuálne rankuje v top 10. Modré = aktuálne mimo top 10 alebo nízke pozície. Objem = mesačné vyhľadávania v lokálnom SERPe.</p>
+
+    <div class="highlight-positive" style="margin-top: 32px;">
+      <strong>🇭🇺 HU trh má najvyššiu „traffic per keyword" efektivitu:</strong>
+      <p>252 org. KW generuje 2 691 návštev mesačne — pomer 10,7. Pre porovnanie: SK má 321 KW → 3 052 (pomer 9,5); CZ 398 KW → 1 611 (pomer 4,0); RO 211 KW → 2 059 (pomer 9,8). Rankujete na menej termínoch, ale presných a vyše-volume (napr. „masszázságy" 2 400/mes na #3). Preto škálovanie HU cez PPC/SEO = nízke riziko, rýchly lift.</p>
+    </div>
+
+    <div class="highlight-neutral">
+      <strong>🇨🇿 CZ paid je najaktívnejší, SEO efektivita najslabšia:</strong>
+      <p>Velvesa.cz má najvyšší počet org. KW (398) a paid KW (29) spomedzi 4 domén, ale org. traffic je len 1 611 (najnižší zo všetkých!). Znamená to, že rankujete na veľa termínoch ale prevažne na dolných pozíciách (4–10). Pri KD 0 u „maderoterapie" 8 400/mes a „masážní olej" 1 000/mes ide o quick-win content + interné linky.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SEO ANALÝZA -->
+<section id="seo">
+  <div class="container">
+    <h2>SEO analýza — kde rankujete a kde sa dá pohnúť rýchlo</h2>
+    <p class="section-sub">Top organické keywords pre velvesa.sk a cross-trhové porovnanie. Metriky: Google Search Data · Apríl 2026.</p>
+
+    <h3 class="cat-header">TOP 12 SK organických KW (Velvesa.sk)</h3>
+    <div class="table-scroll">
+    <table class="audit-table">
+      <thead>
+        <tr>
+          <th>Keyword</th>
+          <th style="text-align: right;">Volume</th>
+          <th style="text-align: right;">Pozícia</th>
+          <th style="text-align: right;">Traffic</th>
+          <th style="text-align: right;">CPC (€)</th>
+          <th>Typ</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="strong">velvesa</td><td class="num">500</td><td class="num">1</td><td class="num">497</td><td class="num">0,23</td><td><span class="badge badge-ok">Brand</span></td></tr>
+        <tr><td>senzuálna masáž</td><td class="num">150</td><td class="num">1</td><td class="num">213</td><td class="num">—</td><td><span class="badge badge-info">Info/magazín</span></td></tr>
+        <tr><td>trigger point</td><td class="num">300</td><td class="num">2</td><td class="num">133</td><td class="num">0,05</td><td><span class="badge badge-info">Info/magazín</span></td></tr>
+        <tr><td>tantrická masáž</td><td class="num">1 200</td><td class="num">6</td><td class="num">125</td><td class="num">—</td><td><span class="badge badge-info">Info/magazín</span></td></tr>
+        <tr><td>muay krém recenzie</td><td class="num">600</td><td class="num">2</td><td class="num">91</td><td class="num">0,06</td><td><span class="badge badge-positive">Produkt</span></td></tr>
+        <tr><td>moxovanie</td><td class="num">250</td><td class="num">1</td><td class="num">86</td><td class="num">0,05</td><td><span class="badge badge-info">Info/magazín</span></td></tr>
+        <tr><td>lávové kamene</td><td class="num">500</td><td class="num">2</td><td class="num">83</td><td class="num">0,14</td><td><span class="badge badge-positive">Produkt</span></td></tr>
+        <tr><td>banky na bankovanie</td><td class="num">400</td><td class="num">4</td><td class="num">73</td><td class="num">0,25</td><td><span class="badge badge-positive">Produkt</span></td></tr>
+        <tr><td>maderoterapia valceky</td><td class="num">200</td><td class="num">1</td><td class="num">69</td><td class="num">0,16</td><td><span class="badge badge-positive">Produkt</span></td></tr>
+        <tr><td>masážny stôl</td><td class="num">300</td><td class="num">4</td><td class="num">49</td><td class="num">0,31</td><td><span class="badge badge-warning">Quick win</span></td></tr>
+        <tr><td>vyhrievacia podložka</td><td class="num">800</td><td class="num">6</td><td class="num">46</td><td class="num">0,12</td><td><span class="badge badge-warning">Quick win</span></td></tr>
+        <tr><td>akupresúrna podložka</td><td class="num">1 000</td><td class="num">10</td><td class="num">33</td><td class="num">0,14</td><td><span class="badge badge-warning">Quick win</span></td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="highlight-warning">
+      <strong>SEO finding: „magazín" dominuje nad e-commerce KW v top traffic</strong>
+      <p>Z top 10 organických keyword 5 je informačných (senzuálna masáž, trigger point, tantrická masáž, moxovanie, muay krém recenzie). Príliv cez magazín Masér je silný, no konverzný pomer na týchto stránkach býva 5–8× nižší než na kategóriách. E-commerce KW ako „masážny stôl" (pos 4), „vyhrievacia podložka" (pos 6) a „akupresúrna podložka" (pos 10) majú vyšší konverzný potenciál a sú ready-to-push.</p>
+    </div>
+
+    <h3 class="cat-header">Quick wins cez 4 trhy (KD 0 alebo nízka)</h3>
+    <div class="table-scroll">
+    <table class="audit-table">
+      <thead>
+        <tr>
+          <th>Trh</th>
+          <th>Keyword</th>
+          <th style="text-align: right;">Volume</th>
+          <th style="text-align: right;">KD</th>
+          <th style="text-align: right;">Aktuálna pozícia</th>
+          <th>Odporúčanie</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>🇨🇿 CZ</td><td class="strong">maderoterapie</td><td class="num">8 400</td><td class="num">0</td><td class="num">mimo top 10</td><td>Samostatná LP + interné linky z produktov</td></tr>
+        <tr><td>🇨🇿 CZ</td><td class="strong">akupresurní podložka</td><td class="num">8 800</td><td class="num">32</td><td class="num">na overenie</td><td>Content + Shopping feed push</td></tr>
+        <tr><td>🇨🇿 CZ</td><td>masážní olej</td><td class="num">1 000</td><td class="num">0</td><td class="num">na overenie</td><td>Kategória + produktová LP</td></tr>
+        <tr><td>🇨🇿 CZ</td><td>masážní lehátko</td><td class="num">1 000</td><td class="num">0</td><td class="num">na overenie</td><td>PMax + produktový feed</td></tr>
+        <tr><td>🇭🇺 HU</td><td class="strong">kineziológiai tapasz</td><td class="num">5 000</td><td class="num">0</td><td class="num">mimo top 10</td><td>Landing page „Kineziológiai tapasz — útmutató"</td></tr>
+        <tr><td>🇭🇺 HU</td><td>masszázságy</td><td class="num">2 600</td><td class="num">6</td><td class="num">#3</td><td>Lift na #1–2 cez on-page + backlinks</td></tr>
+        <tr><td>🇭🇺 HU</td><td>köpöly</td><td class="num">700</td><td class="num">0</td><td class="num">#3</td><td>Produkt + guides bundle (Search + PMax)</td></tr>
+        <tr><td>🇷🇴 RO</td><td class="strong">banda kinesiologica</td><td class="num">2 800</td><td class="num">0</td><td class="num">mimo top 10</td><td>Nová kategória + content</td></tr>
+        <tr><td>🇷🇴 RO</td><td class="strong">pat masaj</td><td class="num">2 100</td><td class="num">0</td><td class="num">mimo top 10</td><td>Kategória + feed úprava</td></tr>
+        <tr><td>🇷🇴 RO</td><td>masa de masaj</td><td class="num">1 100</td><td class="num">4</td><td class="num">#9</td><td>On-page optimalizácia, interné linky</td></tr>
+        <tr><td>🇸🇰 SK</td><td>akupresúrna podložka</td><td class="num">1 000</td><td class="num">0</td><td class="num">#10</td><td>Lift na top 3 (Quick win)</td></tr>
+        <tr><td>🇸🇰 SK</td><td>vyhrievacia podložka</td><td class="num">800</td><td class="num">0</td><td class="num">#6</td><td>Meta tags + internal linking</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="priority-summary">
+      <h3>SEO priorizácia — Impact × Effort</h3>
+      <div class="priority-legend">
+        <span><span class="leg-dot p1"></span>P1 (ihneď)</span>
+        <span><span class="leg-dot p2"></span>P2 (1–3 mes.)</span>
+        <span><span class="leg-dot p3"></span>P3 (neskôr)</span>
+      </div>
+      <div class="priority-row">
+        <div class="p-dot" style="background: var(--dex-navy);"></div>
+        <div class="p-text">HU „kineziológiai tapasz" landing page (5 000/mes, KD 0)</div>
+        <span class="p-impact">Vysoký</span>
+        <span class="p-effort">Stredný</span>
+      </div>
+      <div class="priority-row">
+        <div class="p-dot" style="background: var(--dex-navy);"></div>
+        <div class="p-text">CZ „maderoterapie" hub + interné linky z SK verzie</div>
+        <span class="p-impact">Vysoký</span>
+        <span class="p-effort">Nízky</span>
+      </div>
+      <div class="priority-row">
+        <div class="p-dot" style="background: var(--dex-navy);"></div>
+        <div class="p-text">RO „banda kinesiologica" + „pat masaj" nové kategórie</div>
+        <span class="p-impact">Vysoký</span>
+        <span class="p-effort">Stredný</span>
+      </div>
+      <div class="priority-row">
+        <div class="p-dot" style="background: var(--dex-blue);"></div>
+        <div class="p-text">SK „akupresúrna podložka" lift na top 3 (on-page)</div>
+        <span class="p-impact med">Stredný</span>
+        <span class="p-effort">Nízky</span>
+      </div>
+      <div class="priority-row">
+        <div class="p-dot" style="background: var(--dex-blue);"></div>
+        <div class="p-text">HU „masszázságy" z #3 na #1–2 (authority building)</div>
+        <span class="p-impact med">Stredný</span>
+        <span class="p-effort">Stredný</span>
+      </div>
+      <div class="priority-row">
+        <div class="p-dot" style="background: var(--dex-blue); opacity: 0.35;"></div>
+        <div class="p-text">Cross-linkovanie magazínu Masér do produktových kategórií</div>
+        <span class="p-impact low">Nízky</span>
+        <span class="p-effort">Nízky</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAID ANALÝZA -->
+<section class="alt" id="paid">
+  <div class="container">
+    <h2>Paid kampane — kolaps visibility + vysoký CPC</h2>
+    <p class="section-sub">Kombinovaný pohľad: Ahrefs paid tracking (zverejnené reklamy) + biznis dáta klienta (CPC trend).</p>
+
+    <div class="highlight-negative">
+      <strong>Kľúčový paid finding — kolaps visibility na SK trhu</strong>
+      <p>Od septembra 2025 do apríla 2026 Ahrefs eviduje pokles Velvesa.sk paid traffic z <strong>1&nbsp;291 klikov/mes</strong> na <strong>37 klikov/mes</strong> (−97 %). Odhadovaný paid cost z ~20 875 $ klesol na ~1 332 $. Paralelne CPC +73 % (interné dáta). Interpretácia: pri podobnom budgete ste nakúpili 10–20× menej klikov — aukciu ste stratili, nie rozhodli sa ju opustiť.</p>
+    </div>
+
+    <h3 class="cat-header">Velvesa.sk paid traffic mesačne — Ahrefs estimate</h3>
+    <div class="chart-wrap" style="margin-top: 16px; padding: 28px;">
+      <div class="chart-title">Paid traffic (kliky/mes) · Apr 2025 – Apr 2026</div>
+      <div class="chart-subtitle">Google Search Data · Ahrefs estimates lokálneho SK SERPu</div>
+      <svg viewBox="0 0 1000 280" style="width: 100%; height: auto; margin-top: 12px;">
+        <defs>
+          <linearGradient id="paidGrad" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0%" stop-color="#ff7f00" stop-opacity="0.3"/>
+            <stop offset="100%" stop-color="#ff7f00" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <line x1="60" x2="980" y1="40" y2="40" stroke="rgba(255,255,255,0.06)"/>
+        <line x1="60" x2="980" y1="100" y2="100" stroke="rgba(255,255,255,0.06)"/>
+        <line x1="60" x2="980" y1="160" y2="160" stroke="rgba(255,255,255,0.06)"/>
+        <line x1="60" x2="980" y1="220" y2="220" stroke="rgba(255,255,255,0.06)"/>
+        <text x="50" y="44" fill="rgba(255,255,255,0.3)" font-size="10" text-anchor="end">1 500</text>
+        <text x="50" y="104" fill="rgba(255,255,255,0.3)" font-size="10" text-anchor="end">1 000</text>
+        <text x="50" y="164" fill="rgba(255,255,255,0.3)" font-size="10" text-anchor="end">500</text>
+        <text x="50" y="224" fill="rgba(255,255,255,0.3)" font-size="10" text-anchor="end">0</text>
+        <!-- Area -->
+        <path d="M 85 210 L 160 205 L 230 159 L 300 178 L 370 180 L 440 115 L 510 192 L 580 195 L 650 193 L 720 203 L 790 216 L 860 222 L 920 223 L 920 225 L 85 225 Z" fill="url(#paidGrad)"/>
+        <polyline points="85,210 160,205 230,159 300,178 370,180 440,115 510,192 580,195 650,193 720,203 790,216 860,222 920,223" fill="none" stroke="#ff7f00" stroke-width="2.5" stroke-linecap="round"/>
+        <!-- Labels on key points -->
+        <circle cx="440" cy="115" r="5" fill="#ff7f00"/>
+        <text x="440" y="105" fill="#ff7f00" font-size="11" font-weight="600" text-anchor="middle">1 291 · Sep</text>
+        <circle cx="920" cy="223" r="5" fill="#ff7f00"/>
+        <text x="920" y="245" fill="#ff7f00" font-size="11" font-weight="600" text-anchor="middle">37 · Apr</text>
+        <g fill="rgba(255,255,255,0.4)" font-size="11" text-anchor="middle">
+          <text x="85" y="255">Apr 25</text>
+          <text x="160" y="255">Máj</text>
+          <text x="230" y="255">Jún</text>
+          <text x="300" y="255">Júl</text>
+          <text x="370" y="255">Aug</text>
+          <text x="440" y="255">Sep</text>
+          <text x="510" y="255">Okt</text>
+          <text x="580" y="255">Nov</text>
+          <text x="650" y="255">Dec</text>
+          <text x="720" y="255">Jan 26</text>
+          <text x="790" y="255">Feb</text>
+          <text x="860" y="255">Mar</text>
+          <text x="920" y="255">Apr</text>
+        </g>
+      </svg>
+    </div>
+
+    <h3 class="cat-header">Top paid landing pages (Velvesa.sk · Apr 2026)</h3>
+    <div class="table-scroll">
+    <table class="audit-table">
+      <thead>
+        <tr>
+          <th>Landing page</th>
+          <th>Top KW</th>
+          <th style="text-align: right;">Volume</th>
+          <th style="text-align: right;">Počet reklám</th>
+          <th style="text-align: right;">Kliky</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>/masazne-stoly</td><td>masérske stoly</td><td class="num">40</td><td class="num">2</td><td class="num">12</td></tr>
+        <tr><td>/jednorazove-plachty</td><td>jednorazové plachty</td><td class="num">60</td><td class="num">3</td><td class="num">5</td></tr>
+        <tr><td>/maderoterapia</td><td>madero valceky</td><td class="num">60</td><td class="num">5</td><td class="num">5</td></tr>
+        <tr><td>/masazne-oleje</td><td>olej na masírovanie</td><td class="num">40</td><td class="num">1</td><td class="num">2</td></tr>
+        <tr><td>/maser/diastaza-brusnych-svalov</td><td>diastáza príznaky</td><td class="num">80</td><td class="num">1</td><td class="num">2</td></tr>
+        <tr><td>/pivna-kozmetika</td><td>pivná kozmetika</td><td class="num">20</td><td class="num">1</td><td class="num">2</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="highlight-warning">
+      <strong>Paid finding — rozptyl bez fokusu</strong>
+      <p>17 aktívnych paid KW rozptýlených cez 10+ landing pages, každá s 1–5 reklamami. Z top 10 paid stránok je len 1 core produktová kategória („masazne-stoly"). Zvyšok sú nízko-volume produkty (60–80 vol/mes) alebo informačné stránky z magazínu. Dôsledok: priemerný objem na klik je nízky, aukcie drahé, relevancia rozmazaná → low QS → vyšší CPC. <strong>Konsolidácia na 3–4 hlavné ad groupy (masážne stoly, oleje, tejpy, akupresúrna podložka) s vlastnými LP by okamžite zvýšila Quality Score.</strong></p>
+    </div>
+
+    <div class="cta-box"><a href="https://adstransparency.google.com/?region=SK&domain=velvesa.sk" target="_blank" rel="noopener">Otvoriť Google Ads Transparency Center pre velvesa.sk →</a></div>
+  </div>
+</section>
+
+<!-- KONKURENCIA -->
+<section id="konkurencia">
+  <div class="container">
+    <h2>Konkurenčná analýza — SK trh</h2>
+    <p class="section-sub">Priami a nepriami konkurenti pre masérsko/wellness segment. Poradie podľa spoločných organických KW s Velvesa.sk.</p>
+
+    <div class="methodology-box">
+      <strong>Metodológia:</strong>
+      <p>Konkurenti extrahovaní cez Google Search Data (common organic keywords s velvesa.sk v Apríl 2026). Drmax.sk a mojadm.sk sú zahrnuté ako kategória pharma/kozmetika — majú prekryv na top generických masážnych produktoch ale nie sú priami špecialisti. Fabulo.sk a eshop-masaze.sk sú najpodobnejší business model.</p>
+    </div>
+
+    <div class="table-scroll">
+    <table class="audit-table">
+      <thead>
+        <tr>
+          <th>Konkurent</th>
+          <th style="text-align: right;">DR</th>
+          <th style="text-align: right;">Org. KW</th>
+          <th style="text-align: right;">Org. traffic</th>
+          <th style="text-align: right;">Spoločné KW</th>
+          <th style="text-align: right;">Paid</th>
+          <th>Typ hrozby</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="strong">drmax.sk</td><td class="num">68</td><td class="num">30 522</td><td class="num">1 671 431</td><td class="num">126</td><td>—</td><td><span class="badge badge-critical">Pharma giant</span></td></tr>
+        <tr><td class="strong">fabulo.sk</td><td class="num">40</td><td class="num">166</td><td class="num">2 979</td><td class="num">67</td><td>23 KW · 144 kl.</td><td><span class="badge badge-critical">Priama hrozba PPC</span></td></tr>
+        <tr><td class="strong">mojadm.sk</td><td class="num">60</td><td class="num">9 296</td><td class="num">343 917</td><td class="num">49</td><td>—</td><td><span class="badge badge-warning">Kozmetika/wellness</span></td></tr>
+        <tr><td class="strong">unizdrav.sk</td><td class="num">39</td><td class="num">2 031</td><td class="num">34 900</td><td class="num">43</td><td>—</td><td><span class="badge badge-warning">Rehab/zdravie</span></td></tr>
+        <tr><td class="strong">insportline.sk</td><td class="num">55</td><td class="num">1 650</td><td class="num">24 575</td><td class="num">37</td><td>—</td><td><span class="badge badge-warning">Šport &amp; fitness</span></td></tr>
+        <tr><td class="strong">eshop-masaze.sk</td><td class="num">0</td><td class="num">15</td><td class="num">260</td><td class="num">31</td><td>0 KW</td><td><span class="badge badge-info">Malý špecialista</span></td></tr>
+        <tr><td class="strong">rehabilitacnepomocky.sk</td><td class="num">11</td><td class="num">322</td><td class="num">4 137</td><td class="num">24</td><td>—</td><td><span class="badge badge-warning">SEO lídr v nische</span></td></tr>
+        <tr class="row-client"><td class="strong">velvesa.sk</td><td class="num">24</td><td class="num">321</td><td class="num">3 052</td><td class="num">—</td><td>17 KW · 37 kl.</td><td><span class="badge badge-ok">Klient</span></td></tr>
+        <tr><td class="strong">eureko.sk</td><td class="num">11</td><td class="num">53</td><td class="num">631</td><td class="num">23</td><td>0 KW</td><td><span class="badge badge-info">Malý špecialista</span></td></tr>
+        <tr><td class="strong">fyzio-shop.sk</td><td class="num">6</td><td class="num">102</td><td class="num">1 422</td><td class="num">22</td><td>0 KW</td><td><span class="badge badge-info">Fyzio/rehab</span></td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3 class="cat-header">Traffic porovnanie — priami konkurenti (Velvesa vs špecialisti)</h3>
+    <div class="barchart">
+      <div class="barchart-row">
+        <div class="bc-label">rehabilitacnepomocky.sk</div>
+        <div class="bc-bar"><div class="bc-fill" style="width: 82%;"></div></div>
+        <div class="bc-val">4 137</div>
+      </div>
+      <div class="barchart-row">
+        <div class="bc-label">velvesa.sk</div>
+        <div class="bc-bar"><div class="bc-fill client" style="width: 61%;"></div></div>
+        <div class="bc-val">3 052</div>
+      </div>
+      <div class="barchart-row">
+        <div class="bc-label">fabulo.sk</div>
+        <div class="bc-bar"><div class="bc-fill" style="width: 59%;"></div></div>
+        <div class="bc-val">2 979</div>
+      </div>
+      <div class="barchart-row">
+        <div class="bc-label">fyzio-shop.sk</div>
+        <div class="bc-bar"><div class="bc-fill" style="width: 28%;"></div></div>
+        <div class="bc-val">1 422</div>
+      </div>
+      <div class="barchart-row">
+        <div class="bc-label">eureko.sk</div>
+        <div class="bc-bar"><div class="bc-fill" style="width: 13%;"></div></div>
+        <div class="bc-val">631</div>
+      </div>
+      <div class="barchart-row">
+        <div class="bc-label">eshop-masaze.sk</div>
+        <div class="bc-bar"><div class="bc-fill" style="width: 5%;"></div></div>
+        <div class="bc-val">260</div>
+      </div>
+    </div>
+
+    <h3 class="cat-header">Paid traffic porovnanie — Velvesa vs fabulo.sk (Ahrefs estimate)</h3>
+    <div class="barchart">
+      <div class="barchart-row">
+        <div class="bc-label">fabulo.sk · 23 KW</div>
+        <div class="bc-bar"><div class="bc-fill" style="width: 100%;"></div></div>
+        <div class="bc-val">144</div>
+      </div>
+      <div class="barchart-row">
+        <div class="bc-label">velvesa.sk · 17 KW</div>
+        <div class="bc-bar"><div class="bc-fill client" style="width: 26%;"></div></div>
+        <div class="bc-val">37</div>
+      </div>
+    </div>
+    <p style="font-size: 11px; color: var(--dex-muted); margin-top: 10px;">Kliky/mes z paid kampaní (Ahrefs modelový odhad). Fabulo spend estimate ~5 637 $ vs Velvesa ~1 391 $ — ~4× viac paid visibility pri podobnej kategórii.</p>
+
+    <div class="highlight-negative">
+      <strong>Konkurenčný finding — fabulo.sk vyhral SK PPC aukciu v Q1 2026</strong>
+      <p>Fabulo.sk má 23 paid KW vs Velvesa 17, pri 4× vyššom paid traffic. Ich DR (40) je takmer 2× vyššie ako Velvesa (24), takže v Google Ads majú prirodzene silnejšie ranking signály + Quality Score. Keďže Velvesa znížila paid aktivitu v Q1 2026, fabulo obsadila voľný priestor. <strong>Návrat k paid aktivite teraz znamená súboj s fabulo.sk, nie s prázdnym SERP.</strong></p>
+    </div>
+
+    <div class="highlight-neutral">
+      <strong>SERP overenie — brand keyword „velvesa" (500/mes · SK)</strong>
+      <p>Na brand dotaz „velvesa" organicky Velvesa.sk #1 (497 kliky/mes). Biduje Velvesa aj Google Ads na vlastný brand? <strong>Na overenie klientom</strong> — automatizovaná kontrola nepotvrdila explicitný brand search campaign. Ak nie, odporúčame brand campaign spustiť (brand KW CPC = 0,23 €, vysoký CTR, chráni pred potenciálnym bidovaním konkurencie).</p>
+    </div>
+  </div>
+</section>
+
+<!-- BACKLINK -->
+<section class="alt">
+  <div class="container">
+    <h2>Backlink profil — velvesa.sk</h2>
+    <p class="section-sub">Externé signály pre Google ranking. Zdroj: Google Search Data · Apríl 2026.</p>
+    <div class="metrics-grid">
+      <div class="metric-card">
+        <h3>Live backlinks</h3>
+        <div class="value">15 190</div>
+        <div class="desc">Aktuálne aktívne linky smerujúce na velvesa.sk</div>
+      </div>
+      <div class="metric-card">
+        <h3>Referring domains</h3>
+        <div class="value">156</div>
+        <div class="desc">Unikátnych domén. Solidný základ, ale priestor na rast vs špecialisti.</div>
+      </div>
+      <div class="metric-card" style="border-left-color: var(--dex-teal);">
+        <h3>Domain Rating</h3>
+        <div class="value" style="color: var(--dex-teal);">24</div>
+        <div class="desc">SK · porovnateľné s konkurenciou. CZ, HU: DR 26. RO: DR 14 (priestor na rast).</div>
+      </div>
+      <div class="metric-card" style="border-left-color: var(--dex-orange);">
+        <h3>Historické backlinks</h3>
+        <div class="value" style="color: var(--dex-orange);">65 640</div>
+        <div class="desc">Všetky kedy-existujúce linky. Pomer 15 190 live / 65 640 all-time = 23 % stabilných — zdravé.</div>
+      </div>
+    </div>
+
+    <div class="highlight-positive" style="margin-top: 24px;">
+      <strong>Backlink finding — magazín Masér je link magnet</strong>
+      <p>Informačné články ako „senzuálna masáž", „moxovanie", „trigger point", „tantrická masáž" prinášajú veľa organic traffic (spolu 670+ kliky/mes) a pravdepodobne aj prirodzené backlinks. <strong>Skvelý základ pre hub-and-spoke SEO</strong>: magazín ako authority hub → interné linky na produktové kategórie. Momentálne cross-linkovanie článok → kategória je limitované.</p>
+    </div>
+
+    <div class="highlight-warning">
+      <strong>Backlink finding — cross-trh link transfer je nevyužitý</strong>
+      <p>Velvesa.sk má DR 24, velvesa.cz DR 26, velvesa.hu DR 26, velvesa.ro DR 14. Sú to oddelené domény bez wzájomnej linkbuilding stratégie. Cross-domain interné linky (SK → CZ variant, SK → HU variant) s hreflang signálmi by pomohli zdieľať authority a konzolidovať duplikáciu obsahu medzi 4 jazykmi.</p>
+    </div>
+  </div>
+</section>
+
+<!-- EXPANZIA PER COUNTRY -->
+<section>
+  <div class="container">
+    <h2>Keyword potenciál pre expanziu — per trh</h2>
+    <p class="section-sub">Ktoré termíny naprieč 4 trhmi majú najvyšší produkt × dopyt × bez Velvesa presence prienik. Priamo aplikovateľné pre kontent + paid.</p>
+
+    <!-- CZ -->
+    <h3 class="cat-header">🇨🇿 Česká republika — najaktívnejší paid, najnižšia SEO efektivita</h3>
+    <div class="table-scroll">
+    <table class="audit-table">
+      <thead>
+        <tr><th>Keyword</th><th style="text-align: right;">Volume/mes</th><th style="text-align: right;">KD</th><th style="text-align: right;">CPC (Kč)</th><th>Velvesa.cz stav</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>akupresurní podložka</td><td class="num">8 800</td><td class="num">32</td><td class="num">45</td><td><span class="badge badge-warning">Mimo top 10</span></td></tr>
+        <tr><td>maderoterapie</td><td class="num">8 400</td><td class="num">0</td><td class="num">25</td><td><span class="badge badge-warning">Iba derivát #1</span></td></tr>
+        <tr><td>masážní lehátko</td><td class="num">1 000</td><td class="num">0</td><td class="num">45</td><td><span class="badge badge-info">Na overenie</span></td></tr>
+        <tr><td>masážní olej</td><td class="num">1 000</td><td class="num">0</td><td class="num">35</td><td><span class="badge badge-info">Na overenie</span></td></tr>
+        <tr><td>baňkování</td><td class="num">400</td><td class="num">0</td><td class="num">6</td><td><span class="badge badge-positive">Potenciál</span></td></tr>
+        <tr><td>masážní stůl</td><td class="num">200</td><td class="num">0</td><td class="num">45</td><td><span class="badge badge-positive">Produkt máte</span></td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="highlight-warning">
+      <strong>CZ stratégia (P1):</strong>
+      <p>„Maderoterapie" samostatná LP (kópia SK, lokalizácia terminológie) + 10–15 interných liniek z produktových stránok. Paralelne Shopping feed push pre „masážní lehátko" a „masážní olej" (KD 0, vaši produkty). „Akupresurní podložka" (KD 32) je contentovo-dlhý hrací — 1–3 mesiace SEO + paid support.</p>
+    </div>
+
+    <!-- HU -->
+    <h3 class="cat-header" style="margin-top: 40px;">🇭🇺 Maďarsko — najefektívnejšia SEO doména, 3 produkt × dopyt gapy</h3>
+    <div class="table-scroll">
+    <table class="audit-table">
+      <thead>
+        <tr><th>Keyword</th><th style="text-align: right;">Volume/mes</th><th style="text-align: right;">KD</th><th style="text-align: right;">CPC (HUF)</th><th>Velvesa.hu stav</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>kineziológiai tapasz</td><td class="num">5 000</td><td class="num">0</td><td class="num">10</td><td><span class="badge badge-warning">Mimo top 10</span></td></tr>
+        <tr><td>masszázságy</td><td class="num">2 600</td><td class="num">6</td><td class="num">30</td><td><span class="badge badge-positive">#3 · lift na #1–2</span></td></tr>
+        <tr><td>maderoterápia</td><td class="num">800</td><td class="num">0</td><td class="num">15</td><td><span class="badge badge-positive">#1 (súčasný)</span></td></tr>
+        <tr><td>köpöly</td><td class="num">700</td><td class="num">0</td><td class="num">30</td><td><span class="badge badge-positive">#3</span></td></tr>
+        <tr><td>masszázs olaj</td><td class="num">300</td><td class="num">0</td><td class="num">15</td><td><span class="badge badge-warning">Na overenie</span></td></tr>
+        <tr><td>masszázs kellékek</td><td class="num">250</td><td class="num">3</td><td class="num">20</td><td><span class="badge badge-positive">Kategória existuje</span></td></tr>
+        <tr><td>akupresszúrás szőnyeg</td><td class="num">200</td><td class="num">0</td><td class="num">15</td><td><span class="badge badge-warning">Na overenie</span></td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="highlight-positive">
+      <strong>HU stratégia (P1):</strong>
+      <p>„Kineziológiai tapasz" je najväčší quick win cez celý multi-trh portfólio: 5 000/mes, KD 0, CPC 10 HUF. Produkty (Nasara, RockTape, Temtex, BB tape) v katalógu sú, landing page chýba. Odhadovaný lift po 4–6 týždňoch: top 5 pozícia → +500 kliky/mes ekvivalent. Paralelne „masszázságy" lift z #3 na #1–2 = ~200–400 kliky/mes navyše.</p>
+    </div>
+
+    <!-- RO -->
+    <h3 class="cat-header" style="margin-top: 40px;">🇷🇴 Rumunsko — slabšia autorita (DR 14), veľké voľné SERPy</h3>
+    <div class="table-scroll">
+    <table class="audit-table">
+      <thead>
+        <tr><th>Keyword</th><th style="text-align: right;">Volume/mes</th><th style="text-align: right;">KD</th><th style="text-align: right;">CPC (RON)</th><th>Velvesa.ro stav</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>banda kinesiologica</td><td class="num">2 800</td><td class="num">0</td><td class="num">10</td><td><span class="badge badge-warning">Mimo top 10</span></td></tr>
+        <tr><td>pat masaj</td><td class="num">2 100</td><td class="num">0</td><td class="num">35</td><td><span class="badge badge-warning">Mimo top 10</span></td></tr>
+        <tr><td>ventuze masaj</td><td class="num">1 600</td><td class="num">0</td><td class="num">9</td><td><span class="badge badge-warning">#6</span></td></tr>
+        <tr><td>masa de masaj</td><td class="num">1 100</td><td class="num">4</td><td class="num">30</td><td><span class="badge badge-warning">#9</span></td></tr>
+        <tr><td>ulei de masaj</td><td class="num">1 100</td><td class="num">0</td><td class="num">20</td><td><span class="badge badge-positive">#3</span></td></tr>
+        <tr><td>masaj thailandez</td><td class="num">700</td><td class="num">0</td><td class="num">10</td><td><span class="badge badge-positive">#1</span></td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="highlight-neutral">
+      <strong>RO stratégia (P1):</strong>
+      <p>DR 14 je najslabšia zo 4 domén — pred SEO pushom je potrebný backlink plan. Paralelne PPC agresívnejšie: „pat masaj" (2 100/mes, KD 0) + „banda kinesiologica" (2 800/mes, KD 0) sú low-cost search terms kde sa dá získať top pozícia v paid bez boja so silnými konkurentmi. Shopping feed audit je kritický — pri 146 paid klikov/mes už 16 paid KW = najaktívnejší paid presence na klienta naprieč trhmi.</p>
+    </div>
+
+    <!-- SK -->
+    <h3 class="cat-header" style="margin-top: 40px;">🇸🇰 Slovensko — core trh, quick wins na existujúcich KW</h3>
+    <div class="table-scroll">
+    <table class="audit-table">
+      <thead>
+        <tr><th>Keyword</th><th style="text-align: right;">Volume/mes</th><th style="text-align: right;">KD</th><th style="text-align: right;">CPC (€)</th><th>Velvesa.sk stav</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>maderoterapia</td><td class="num">5 600</td><td class="num">0</td><td class="num">0,20</td><td><span class="badge badge-warning">Mimo top 10 (hlavný term)</span></td></tr>
+        <tr><td>akupresúrna podložka</td><td class="num">1 000</td><td class="num">0</td><td class="num">0,14</td><td><span class="badge badge-warning">#10 → lift na top 3</span></td></tr>
+        <tr><td>vyhrievacia podložka</td><td class="num">800</td><td class="num">0</td><td class="num">0,12</td><td><span class="badge badge-warning">#6 → lift na top 3</span></td></tr>
+        <tr><td>gua sha</td><td class="num">800</td><td class="num">0</td><td class="num">0,14</td><td><span class="badge badge-warning">#5</span></td></tr>
+        <tr><td>masážny stôl / masersky stol</td><td class="num">650</td><td class="num">0</td><td class="num">0,30</td><td><span class="badge badge-warning">#4 oba → lift</span></td></tr>
+        <tr><td>lávové kamene</td><td class="num">500</td><td class="num">0</td><td class="num">0,14</td><td><span class="badge badge-positive">#2</span></td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</section>
+
+<!-- HLAVNÉ ZISTENIA -->
+<section class="alt" id="findings">
+  <div class="container">
+    <h2>Hlavné zistenia — so severity bars</h2>
+    <p class="section-sub">Kombinácia biznis kontextu (interný audit 2026) a externých signálov (Google Search Data, publikované reklamy, web scraping).</p>
+
+    <div class="finding">
+      <div class="bar high"></div>
+      <div class="content">
+        <h4>Paid visibility kolaps na SK <span class="badge badge-critical">Vysoká</span></h4>
+        <p>Ahrefs odhad paid traffic velvesa.sk klesol z 1 291 klikov/mes (Sep 25) na 37 klikov/mes (Apr 26) = −97 %. Konkurent fabulo.sk má ~4× vyššiu paid visibility. CPC +73 % podľa interných dát = neprimeraná relevancia landing pages ↔ aukčná cena.</p>
+        <div class="rec"><strong>Akcia:</strong> Audit Quality Score cez Google Ads účet (landing page experience, ad relevance, expected CTR), konsolidácia ad groups na 3–4 kategórie s dedikovanými LP, spustenie brand campaign ako stabilná baseline.</div>
+      </div>
+    </div>
+
+    <div class="finding">
+      <div class="bar high"></div>
+      <div class="content">
+        <h4>Multi-trh blind spot: CZ/HU/RO reporting mimo biznis auditu <span class="badge badge-critical">Vysoká</span></h4>
+        <p>Interný biznis audit (Jan–Apr 2026) pokrýva iba Slovensko. 3 ostatné trhy (CZ, HU, RO) nemajú v reportingu PNO, marža, CPC, AOV. Napriek tomu velvesa.cz má 29 paid KW (viac než SK!) a velvesa.ro 146 paid traffic/mes (4× viac než SK!). Bez prehľadu o týchto trhoch neviete, či sú ziskové alebo dotované.</p>
+        <div class="rec"><strong>Akcia:</strong> Zaviesť cross-trh reporting s unifikovanými KPI (Revenue, PNO, Marža, AOV, VOC) pre všetky 4 domény. Zoho Analytics dashboard s filterom country + GA4 property per trh.</div>
+      </div>
+    </div>
+
+    <div class="finding">
+      <div class="bar high"></div>
+      <div class="content">
+        <h4>HU „kineziológiai tapasz" — najväčší cross-trh quick win <span class="badge badge-critical">Vysoká</span></h4>
+        <p>5 000 vyhľadaní/mes, KD 0, CPC 10 HUF. Velvesa.hu nemá landing page na tento termín. Produkty (Nasara, RockTape, Temtex, BB tape) sú v katalógu. Rovnaký SK magazín článok a kategória sa dajú lokalizovať za 2–3 dni.</p>
+        <div class="rec"><strong>Akcia:</strong> Lokalizovaná LP „Kineziológiai tapasz — gyakorlati útmutató" + produktový feed do HU Google Shopping. Očakávaný lift: +300–600 kliky/mes v 4–6 týždňoch.</div>
+      </div>
+    </div>
+
+    <div class="finding">
+      <div class="bar med"></div>
+      <div class="content">
+        <h4>Free shipping policy vs homepage messaging — konflikt <span class="badge badge-warning">Stredná</span></h4>
+        <p>Biznis audit reportuje že od februára 2026 klesol príjem z dopravy na 0 € (strata −2 500 až −3 200 €/mes = ~7 600 € za feb–apr). Homepage velvesa.sk aktuálne (Apríl 2026) komunikuje „doprava od 2,19 €" — t.j. existuje dolný threshold. Buď policy bola zmenená späť, alebo „zadarmo" platí len nad určitý košík. <strong>Na overenie klientom.</strong></p>
+        <div class="rec"><strong>Akcia:</strong> Rýchla kontrola checkout flow pre rôzne košíkové hodnoty, súlad CMS pricing ↔ reálne účtovanie. Ak doprava zadarmo stále beží bez thresholdu: vrátiť threshold 49 € alebo 69 € (priemerná AOV 58 €, limit pretláča AOV hore).</div>
+      </div>
+    </div>
+
+    <div class="finding">
+      <div class="bar med"></div>
+      <div class="content">
+        <h4>Private label nevyužitý ad angle <span class="badge badge-warning">Stredná</span></h4>
+        <p>5 vlastných značiek (Parafinea, Nativea, CellaBella, Movea V6, Magnea) = maržový diferenciátor (44,9 % vs 38,4 %). V paid kampaniach sa objavujú ako generické produkty bez brand angle. Branded campaign na „Parafinea pure masérske potreby" / „CellaBella anticelulitídny olej" je nízkoobjemový (200/mes) ale vysoko-ziskový — aukciu nevybojuvávate s nikým.</p>
+        <div class="rec"><strong>Akcia:</strong> Samostatné PMax kampane per private label značka + dedikované kreatívy v Meta Ads. Target: ROAS 6×+ (vs generic 2–3×).</div>
+      </div>
+    </div>
+
+    <div class="finding">
+      <div class="bar med"></div>
+      <div class="content">
+        <h4>CZ „maderoterapie" 8 400/mes — produktový gap <span class="badge badge-warning">Stredná</span></h4>
+        <p>Najvyšší volume keyword v celom CZ portfóliu (KD 0). Velvesa.cz nerankuje v top 10 na hlavný termín, iba na 8 odvodených (málo-objemových) frázach. Konkurencia v CZ SERP je fragmentovaná — žiadny dominant player. SERP TOP 3: rehabilitacni-potreby.cz, madeva.cz, madero-shop.cz (domain authority < DR 30).</p>
+        <div class="rec"><strong>Akcia:</strong> Kopíruj SK stratégiu (kde #1 na derivát „maderoterapia valceky"), lokalizuj na CZ. Vytvor hub page + 5 guide článkov (maderoterapie postup, nástroje, benefity, domáca maderoterapie, cenník).</div>
+      </div>
+    </div>
+
+    <div class="finding">
+      <div class="bar med"></div>
+      <div class="content">
+        <h4>Magazín Masér vs produktové kategórie — nefungujúci conversion funnel <span class="badge badge-warning">Stredná</span></h4>
+        <p>5 z top 10 SK organických KW sú informačné články z magazínu (senzuálna masáž, trigger point, tantrická masáž, moxovanie, muay krém). Traffic (670+ kliky/mes len z top 5) vstupuje cez magazín ale cross-link na produkty je minimalistický. Návštevník sa nedozvie kde kúpiť oleje / banky / podložky.</p>
+        <div class="rec"><strong>Akcia:</strong> Pridať contextual cross-linking: článok „trigger point" → produkty „masážne valce, SM systém, terapeutické lopty"; článok „moxovanie" → „moxa tyčinky, doplnky"; „senzuálna masáž" → „masážne oleje Nativea, CellaBella". Upsell widgets na konci článkov.</div>
+      </div>
+    </div>
+
+    <div class="finding">
+      <div class="bar med"></div>
+      <div class="content">
+        <h4>RO paid je agresívny ale low-quality KW <span class="badge badge-warning">Stredná</span></h4>
+        <p>Velvesa.ro má 16 paid KW a 146 paid klikov/mes — najaktívnejší paid zo všetkých 4 domén. DR 14 (slabá autorita). Paid stratégia pravdepodobne kompenzuje slabšie organic. Ale pri týchto objemoch (volume core KW 1 100–2 800/mes) by sa malo dať na paid spend zarobiť viac = audit Shopping feed + ad copy.</p>
+        <div class="rec"><strong>Akcia:</strong> Analyzovať RO paid kampane (search vs PMax), skúsiť oddeliť brand campaign + top 5 generických ad groups. PageSpeed check pre RO LP — slabšia autorita často = pomalší hosting = horšie QS.</div>
+      </div>
+    </div>
+
+    <div class="finding">
+      <div class="bar low"></div>
+      <div class="content">
+        <h4>Sezónna príprava — máj/jún = najslabšie mesiace, august = akcia <span class="badge badge-warning">Nízka</span></h4>
+        <p>CMS data 2025 potvrdzujú: máj 72k €, jún 49k € = najnižšie mesiace. August 56k €, September 68k €, November 84k € (peak). Kampane by mali šetriť v máj-jún (low ROAS window) a eskalovať v Aug-Dec (čas sezónnej prípravy).</p>
+        <div class="rec"><strong>Akcia:</strong> Automatizované rozpočtové pravidlá — −30 % spend máj-jún, +50 % spend Aug-Nov. Retention email kampane + vernostný program aktivovať v low season.</div>
+      </div>
+    </div>
+
+    <div class="finding">
+      <div class="bar low"></div>
+      <div class="content">
+        <h4>Technical SEO — schema ✓, hreflang na overenie <span class="badge badge-warning">Nízka</span></h4>
+        <p>Velvesa.sk má správne Organization + WebSite + FAQPage schema. Title tag „Vybavenie pre masérov, wellness a fyzio | velvesa.sk" = OK. GTM (WRVMX85) nasadený. Hreflang tags medzi 4 doménami sa v extract nezobrazili — <strong>na overenie</strong> (automatický scraping nezachytí všetky head tagy dynamicky).</p>
+        <div class="rec"><strong>Akcia:</strong> Potvrdiť hreflang implementáciu cez Search Console International Targeting report. Implementovať Product schema pre top 100 produktov (Rich results v SERP).</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SUMMARY BOX -->
+<section>
+  <div class="container">
+    <div class="summary-box">
+      <div class="circle-dec c1"></div>
+      <div class="circle-dec c2"></div>
+      <h2>Celkové hodnotenie — Velvesa.sk multi-trh</h2>
+      <div class="summary-grid">
+        <div class="summary-item">
+          <div class="val">6/10</div>
+          <div class="label-title">SEO zdravie</div>
+          <div class="desc">Solídne DR 24–26 na SK/CZ/HU, slabšie RO (14). Quick wins v CZ/HU/RO.</div>
+        </div>
+        <div class="summary-item">
+          <div class="val">3/10</div>
+          <div class="label-title">Paid efektivita</div>
+          <div class="desc">Visibility kolaps na SK, rozptyl bez fokusu, nízky QS pravdepodobný.</div>
+        </div>
+        <div class="summary-item">
+          <div class="val">8/10</div>
+          <div class="label-title">Produkt × katalóg</div>
+          <div class="desc">1500+ produktov, 5 kategórií, 5 private label značiek — silný základ.</div>
+        </div>
+        <div class="summary-item">
+          <div class="val">4/10</div>
+          <div class="label-title">Cross-trh využitie</div>
+          <div class="desc">4 domény bez reporting alignmentu, veľké KW gapy v CZ/HU/RO.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ODPORÚČANIA -->
+<section class="alt" id="odporucania">
+  <div class="container">
+    <h2>Strategické odporúčania — timeline 0–12 mesiacov</h2>
+    <p class="section-sub">Priorizované podľa dopadu na revenue a náročnosti implementácie. Kombinácia nálezov z biznis auditu a externého Ads auditu.</p>
+    <div class="rec-timeline">
+      <div class="rec-step">
+        <div class="step-label">Krok 1 · 0–30 dní · P1</div>
+        <h3>Stop-loss na SK + HU kineziológiai tapasz launch</h3>
+        <p>Okamžité akcie ktoré zastavia ďalší prepad a odštartujú nárast v najefektívnejšom trhu.</p>
+        <ul>
+          <li><strong>SK Paid audit:</strong> Google Ads Quality Score check všetkých kampaní, identifikovať low-QS landing pages, konsolidovať ad groups na 3–4 (masážne stoly, oleje, tejpy, akupresúrne podložky)</li>
+          <li><strong>Brand campaign SK spustiť</strong> — chráni pred fabulo.sk bid-jackingom, CPC 0,23 € bezpečné</li>
+          <li><strong>Free shipping audit</strong> — overiť či policy je stále bez thresholdu, pridať threshold 49 € (pretláča AOV z 49 € na 58 €+)</li>
+          <li><strong>HU „kineziológiai tapasz" LP + Shopping feed</strong> — expected impact +300–600 kliky/mes v 4–6 týždňoch</li>
+          <li><strong>Multi-trh KPI dashboard setup</strong> — Zoho Analytics view s filterom country, unifikované PNO/Marža/AOV metriky</li>
+        </ul>
+      </div>
+      <div class="rec-step">
+        <div class="step-label">Krok 2 · 1–3 mesiace · P1–P2</div>
+        <h3>Cross-trh content transfer + private label PMax</h3>
+        <p>Kódifikácia SK know-how pre CZ/HU/RO, aktivácia private label ako ad-angle.</p>
+        <ul>
+          <li><strong>CZ „maderoterapie" hub</strong> — preklad SK kontextu, 5 guide článkov, interné linky z produktov</li>
+          <li><strong>RO „pat masaj" + „banda kinesiologica" nové kategórie</strong> — backlink plan (DR 14 → cieľ 25 za 3 mes.)</li>
+          <li><strong>PMax kampane per private label</strong> (Parafinea, Nativea, CellaBella, Movea V6, Magnea) na SK + CZ — očakávaný ROAS 6×+</li>
+          <li><strong>Magazín Masér → produkty cross-linking</strong> — upsell widgets na konci top 20 článkov</li>
+          <li><strong>Sezónny budget shift</strong> — automatické pravidlá −30 % máj-jún, +50 % Aug-Nov</li>
+          <li><strong>Email retencia</strong> — vernostný program aktivovať cez Mailchimp/Klaviyo, reaktivácia existujúcej bázy</li>
+        </ul>
+      </div>
+      <div class="rec-step">
+        <div class="step-label">Krok 3 · 3–6 mesiacov · P2</div>
+        <h3>B2B pipeline + Shopping feed optimalizácia</h3>
+        <p>Systematický rast nižších-CPA kanálov a pokrytie najziskovejších produktov.</p>
+        <ul>
+          <li><strong>B2B landing page</strong> — salóny, wellness centrá, hotely, masérske školy. Kvalifikačný dotazník → nižší CPA než cold PPC</li>
+          <li><strong>Shopping feed audit</strong> pre všetky 4 krajiny — GTIN, product titles, custom labels podľa marže (private label = P1)</li>
+          <li><strong>HU + CZ paid expansion</strong> — replikovať funkčné SK kampane (stoly, oleje, tejpy)</li>
+          <li><strong>Heureka Seller Ratings</strong> (min 100 Google reviews) aktivovať v SK + CZ cez Merchant Center</li>
+          <li><strong>Review-driven ad copy</strong> — „4,8★ 250k+ objednávok" ako stabilný trust element</li>
+        </ul>
+      </div>
+      <div class="rec-step">
+        <div class="step-label">Krok 4 · 6–12 mesiacov · P3</div>
+        <h3>Subscription model + expanzia do ďalších trhov</h3>
+        <p>Strednodobé biznisové hybnosti pre stabilizáciu revenue a diverzifikáciu.</p>
+        <ul>
+          <li><strong>Subscription model</strong> pre spotrebný tovar (plachty, oleje) — prediktabilný revenue, nižší CAC/zákazník</li>
+          <li><strong>Hreflang audit + hub</strong> na cross-linking všetkých 4 domén, 1 master produktová databáza</li>
+          <li><strong>5. trh scouting</strong> — na základe dát z CZ/HU/RO vyhodnotiť PL alebo AT (susedné trhy, podobný dopyt)</li>
+          <li><strong>Cohort retention analýza</strong> — LTV, churn, segmenty (B2B vs B2C) — base pre CLV-based bidding</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCKED SECTIONS -->
+<section id="internal-preview">
+  <div class="container">
+    <h2>Exkluzívne analýzy — dostupné v Full Audite</h2>
+    <p class="section-sub">3 oblasti kde externý audit končí a interný začína. Vyžadujú priamy prístup do Google Ads, Meta Ads Manager a Merchant Center.</p>
+
+    <div class="locked-section">
+      <div class="locked-content">
+        <h4>Skutočný ROAS per kampaň — Google Ads + Meta</h4>
+        <p>ROAS breakdown za posledných 12 mesiacov naprieč 4 trhmi, segmentovaný podľa kampane, ad groupu, landing page. Identifikácia top 10 performing + bottom 10 wasters.</p>
+        <p>Breakdown per market: SK target ROAS 4,5× · CZ 3,8× · HU 5,2× · RO 3,1×. Priemerný gap k targetu = X %. Top 3 kampane generujú Y % revenue, bottom 20 % kampaní spaľuje Z % budgetu.</p>
+      </div>
+      <div class="locked-overlay">
+        <div class="locked-icon">
+          <svg viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+        </div>
+        <div class="locked-title">Skutočný ROAS per kampaň</div>
+        <div class="locked-desc">Detailná analýza výnosnosti každej kampane naprieč 4 trhmi — dostupná vo Full Audite po pripojení účtov.</div>
+        <span class="locked-badge" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">Odomknúť →</span>
+      </div>
+    </div>
+
+    <div class="locked-section">
+      <div class="locked-content">
+        <h4>Kde stráca rozpočet — wasted spend map</h4>
+        <p>Duplicate keyword mapping, overlapping ad groups, search term cannibalization. Wasted spend estimate na SK 15–25 %, CZ 20–30 %, RO 25–35 % (odhad pre masérsko-wellness kategóriu).</p>
+        <p>Konkrétne: low-intent search terms ktoré pohlcujú budget, negatívne KW gaps, device performance disparities (desktop vs mobile), geographic wastage v okrajových regiónoch.</p>
+      </div>
+      <div class="locked-overlay">
+        <div class="locked-icon">
+          <svg viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+        </div>
+        <div class="locked-title">Kde stráca rozpočet</div>
+        <div class="locked-desc">Identifikácia konkrétnych kampaní, kľúčových slov a segmentov kde rozpočet nedosahuje ROAS target.</div>
+        <span class="locked-badge" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">Odomknúť →</span>
+      </div>
+    </div>
+
+    <div class="locked-section">
+      <div class="locked-content">
+        <h4>Personalizovaný akčný plán — week-by-week</h4>
+        <p>12-týždňový roadmap s konkrétnymi úlohami, priorizáciou, responsible persons a expected KPI liftom. Week 1: Quality Score audit. Week 2: LP optimizácie. Week 3: Shopping feed cleanup. Week 4: HU launch. Week 5–12: incremental scaling.</p>
+        <p>Integrované s Dexfinity tímom (Acc Manager + PPC specialist + Kreatíva delivery). Mesačná kontrola + optimalizácia cez Looker Studio dashboard.</p>
+      </div>
+      <div class="locked-overlay">
+        <div class="locked-icon">
+          <svg viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+        </div>
+        <div class="locked-title">Personalizovaný akčný plán</div>
+        <div class="locked-desc">12-týždňový roadmap s konkrétnymi krokmi, priorizáciou a expected lift-om — dostupný vo Full Audite.</div>
+        <span class="locked-badge" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">Odomknúť →</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing-section" id="pricing">
+  <div class="p-circle1"></div>
+  <div class="p-circle2"></div>
+  <div class="container">
+    <div class="pricing-header">
+      <h2>Full Audit alebo Full Setup</h2>
+      <p>Externý audit ktorý čítate je 690 €. Ak chcete ísť hlbšie s prístupom do účtov a dostať konkrétny week-by-week plán, máte dve možnosti.</p>
+    </div>
+
+    <div class="wasted-spend-box">
+      <div class="wasted-spend-grid">
+        <div class="ws-item">
+          <div class="ws-val white">~2 400 €</div>
+          <div class="ws-label">Odhadovaný ad spend / mes (4 trhy)</div>
+        </div>
+        <div class="ws-item">
+          <div class="ws-val orange">až 20 %</div>
+          <div class="ws-label">Potenciálny wasted spend</div>
+        </div>
+        <div class="ws-item">
+          <div class="ws-val teal">~2 mes.</div>
+          <div class="ws-label">Payback len na úspore</div>
+        </div>
+      </div>
+      <div class="ws-context">
+        Setup 1 690 € = menej ako 1 mesiac vášho ad spendu naprieč 4 trhmi. Pri paid visibility kolapse na SK (−97 %) a rastúcom CPC (+73 %) sa externé investovanie do optimalizácie vráti rýchlejšie ako v stabilnej situácii.
+        <div class="urgency-line">🔸 Každý týždeň v máji bez optimalizácie = stratený obrat v historicky najslabšom mesiaci.</div>
+      </div>
+    </div>
+
+    <div class="pricing-cards">
+      <!-- Card 1: Full Audit -->
+      <div class="flip-card" id="flipAudit">
+        <div class="flip-card-inner">
+          <div class="flip-front">
+            <div class="pricing-card">
+              <h3>Full Audit + konzultácia</h3>
+              <div class="price">
+                <span class="old">1 590 €</span>
+                <span class="current">1 290 €</span>
+                <span class="period">/ jednorazovo</span>
+              </div>
+              <div class="descrip">Interný audit všetkých kanálov (Google Ads, Meta, Shopping feed, Analytics) naprieč 4 trhmi + 60-min. strategy session s PPC a e-commerce špecialistom.</div>
+              <ul class="features">
+                <li><span class="check">✓</span> Audit Google Ads účtov (SK + CZ + HU + RO)</li>
+                <li><span class="check">✓</span> Meta Ads Manager audit (kreatívy, audiencie, attribution)</li>
+                <li><span class="check">✓</span> Shopping feed audit per trh (GTIN, titles, labels)</li>
+                <li><span class="check">✓</span> Quality Score per kampaň + konkrétne LP fixy</li>
+                <li><span class="check">✓</span> Wasted spend map + akčný plán</li>
+                <li><span class="check">✓</span> 60-min. strategy call s výstupmi</li>
+                <li><span class="check">✓</span> Upsell: ak doplníte Setup, −400 € z ceny</li>
+              </ul>
+              <button class="pricing-cta secondary" onclick="flipCard('flipAudit')">Mám záujem — platba IBAN →</button>
+            </div>
+          </div>
+          <div class="flip-back">
+            <h4>Full Audit — platba</h4>
+            <table class="iban-table">
+              <tr><td>Suma</td><td><strong>1 290 €</strong></td></tr>
+              <tr><td>Príjemca</td><td>Dexfinity s.r.o.</td></tr>
+              <tr><td>IBAN</td><td style="font-family: monospace;">SK18 0900 0000 0050 5804 0235 <button class="iban-copy-btn" onclick="event.stopPropagation();navigator.clipboard.writeText('SK1809000000005058040235');this.textContent='OK!';var b=this;setTimeout(function(){b.textContent='Kop.'},1500)">Kop.</button></td></tr>
+              <tr><td>Banka</td><td>Slovenská sporiteľňa</td></tr>
+              <tr><td>VS</td><td>velvesa-audit</td></tr>
+            </table>
+            <div class="after-payment">
+              <strong>Po platbe:</strong>
+              Potvrdenie pošleme do 24h, onboarding s pridelením PPC specialistu + Acc Managera do 3 pracovných dní. Audit dodáme do 10 pracovných dní.
+            </div>
+            <div class="contact-line">
+              Otázky: <a href="mailto:hello@dex.sk">hello@dex.sk</a> · <a href="tel:+421918435105">+421 918 435 105</a>
+            </div>
+            <button class="unflip-btn" onclick="flipCard('flipAudit')">← Späť na prehľad</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: Full Setup (featured) -->
+      <div class="flip-card featured" id="flipSetup">
+        <div class="flip-card-inner">
+          <div class="flip-front">
+            <div class="pricing-card featured">
+              <div class="card-badge">Odporúčame</div>
+              <h3>Full Setup + správa kampaní</h3>
+              <div class="price">
+                <span class="old">2 090 €</span>
+                <span class="current">1 690 €</span>
+                <span class="period">setup</span>
+              </div>
+              <div class="descrip" style="color: rgba(255,255,255,0.85);">Všetko z Full Auditu <strong>+ kompletné nastavenie kampaní</strong> naprieč 4 trhmi + mesačná správa od 990 €/mes. Dexfinity tím + optimalizácia · mesačný review meeting · Looker Studio dashboard.</div>
+              <ul class="features">
+                <li><span class="check">✓</span> Všetko z Full Auditu</li>
+                <li><span class="check">✓</span> Kompletný Google Ads setup (kampane, ad groups, kreatívy, extensions)</li>
+                <li><span class="check">✓</span> Meta Ads setup + ongoing kreatíva delivery</li>
+                <li><span class="check">✓</span> Shopping feed implementácia + Merchant Center</li>
+                <li><span class="check">✓</span> Mesačná optimalizácia + scripts audit</li>
+                <li><span class="check">✓</span> Looker Studio dashboard (4 trhy v jednom view)</li>
+                <li><span class="check">✓</span> Mesačný performance review s tímom</li>
+              </ul>
+              <button class="pricing-cta primary" onclick="flipCard('flipSetup')">Chcem Full Setup — IBAN →</button>
+            </div>
+          </div>
+          <div class="flip-back">
+            <h4>Full Setup — platba</h4>
+            <table class="iban-table">
+              <tr><td>Setup</td><td><strong>1 690 €</strong></td></tr>
+              <tr><td>Mesačná správa</td><td>od <strong>990 € / mes.</strong></td></tr>
+              <tr><td>Príjemca</td><td>Dexfinity s.r.o.</td></tr>
+              <tr><td>IBAN</td><td style="font-family: monospace;">SK18 0900 0000 0050 5804 0235 <button class="iban-copy-btn" onclick="event.stopPropagation();navigator.clipboard.writeText('SK1809000000005058040235');this.textContent='OK!';var b=this;setTimeout(function(){b.textContent='Kop.'},1500)">Kop.</button></td></tr>
+              <tr><td>Banka</td><td>Slovenská sporiteľňa</td></tr>
+              <tr><td>VS</td><td>velvesa-setup</td></tr>
+            </table>
+            <div class="after-payment">
+              <strong>Po platbe:</strong>
+              Onboarding do 2 prac. dní: pripojenie účtov (Google Ads, Meta, Merchant Center, GA4) · kickoff call s tímom · plán dodania setup do 3 týždňov · prvá mesačná review 30 dní po GO-live.
+            </div>
+            <div class="contact-line">
+              Otázky: <a href="mailto:hello@dex.sk">hello@dex.sk</a> · <a href="tel:+421918435105">+421 918 435 105</a>
+            </div>
+            <button class="unflip-btn" onclick="flipCard('flipSetup')">← Späť na prehľad</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="pricing-note">*Celkové nastavenie analytiky sa nacení podľa výsledku kontroly auditu.<br>Kontakt: <a href="mailto:hello@dex.sk">hello@dex.sk</a> · <a href="tel:+421918435105">+421 918 435 105</a></p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="circle-f cf1"></div>
+  <div class="circle-f cf2"></div>
+  <img src="https://www.dexfinity.com/wp-content/uploads/2021/03/Logo-Small-Dark-Landscape@2x.png" alt="Dexfinity" class="footer-logo">
+  <p><strong>Velvesa.sk — Multi-trh AI Ads Audit Deep</strong></p>
+  <p>Externá analýza · Apríl 2026 · Dexfinity s.r.o.</p>
+  <p style="font-size: 11px; opacity: 0.4; margin-top: 10px;">Zdroje: Google Search Data and Trends, publikované reklamy, web scraping, biznis audit klienta. Paid cost estimates sú modelové hodnoty lokálnych SERP aukcií.</p>
+  <div class="go-beyond">Go Beyond</div>
+</footer>
+
+<script>
+function toggleMenu() {
+  document.getElementById('navLinks').classList.toggle('open');
+  document.querySelector('.hamburger').classList.toggle('active');
+  document.body.style.overflow = document.getElementById('navLinks').classList.contains('open') ? 'hidden' : '';
+}
+function closeMenu() {
+  document.getElementById('navLinks').classList.remove('open');
+  document.querySelector('.hamburger').classList.remove('active');
+  document.body.style.overflow = '';
+}
+document.querySelectorAll('#navLinks a').forEach(function(a) {
+  a.addEventListener('click', closeMenu);
+});
+function flipCard(id) {
+  document.getElementById(id).classList.toggle('flipped');
+}
+</script>
+
+</body>
+</html>
