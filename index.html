@@ -358,7 +358,7 @@ section .section-sub { color: var(--dex-muted); font-size: 14px; font-family: va
 
 <!-- URGENCY BAR -->
 <div class="urgency">
-  Sezóna máj–jún = historicky slabé mesiace (−45% vs peak) · Každý týždeň bez optimalizácie = stratený obrat, ktorý už nedobehnete
+  Napojené na Google Ads API · 6 Velvesa účtov detekovaných · ROAS 8,48× za 90 dní · Full Audit otvára kampaňový detail
 </div>
 
 <!-- NAV -->
@@ -372,6 +372,7 @@ section .section-sub { color: var(--dex-muted); font-size: 14px; font-family: va
       <li><a href="#trhy">Multi-trh</a></li>
       <li><a href="#seo">SEO &amp; PPC</a></li>
       <li><a href="#konkurencia">Konkurencia</a></li>
+      <li><a href="#adwords-deep">Google Ads API</a></li>
       <li><a href="#odporucania">Odporúčania</a></li>
       <li><a href="#pricing" style="color: var(--dex-blue); font-weight: 600;">Cenník</a></li>
     </ul>
@@ -405,9 +406,9 @@ section .section-sub { color: var(--dex-muted); font-size: 14px; font-family: va
         <div class="sublabel">Google search estimate</div>
       </div>
       <div class="hero-stat">
-        <div class="num">−97 %</div>
-        <div class="label">Paid traffic</div>
-        <div class="sublabel">Sep&nbsp;25 → Apr&nbsp;26 (SK)</div>
+        <div class="num">8,48×</div>
+        <div class="label">ROAS Google Ads</div>
+        <div class="sublabel">6 účtov · 90 dní · API data</div>
       </div>
     </div>
   </div>
@@ -416,13 +417,13 @@ section .section-sub { color: var(--dex-muted); font-size: 14px; font-family: va
 <!-- EXEC SUMMARY -->
 <div class="exec-summary" id="exec">
   <div class="es-label">Executive Summary</div>
-  <h2>4 najdôležitejšie zistenia z externého auditu</h2>
+  <h2>4 najdôležitejšie zistenia — externé SEO/paid + API dáta</h2>
   <div class="es-grid">
     <div class="es-item">
-      <div class="es-icon danger">1</div>
+      <div class="es-icon info">1</div>
       <div class="es-body">
-        <h4>Paid visibility kolaps: Sep 2025 → Apr 2026 na SK</h4>
-        <p>Ahrefs eviduje pokles paid traffic z 1 291 klikov/mes (Sep 25) na 37 klikov/mes (Apr 26) — <strong>−97 %</strong>. Paralelne CPC +73 % (podľa interných dát). Konkurent fabulo.sk má v SK aukcii približne 4× viac paid traffic ako Velvesa.</p>
+        <h4>✅ Napojené na Google Ads API — 6 účtov, ROAS 8,48× (90 dní)</h4>
+        <p>Cez Dexfinity MCC sme stiahli dáta zo 6 Velvesa účtov (SK/CZ/HU/RO + novo detekované SI a dormant HR). Celkový spend 37 030 €, conversion value 93 619 €. <strong>Reálny paid stav je výrazne lepší než naznačoval biznis audit</strong> — ROAS 7–11× naprieč aktívnymi trhmi, Quality Score v 7–10 buckete pre 73–89 % KW. Problém CPC rastu je aukčný tlak, nie QS. Detail nižšie.</p>
       </div>
     </div>
     <div class="es-item">
@@ -1419,59 +1420,128 @@ section .section-sub { color: var(--dex-muted); font-size: 14px; font-family: va
   </div>
 </section>
 
-<!-- LOCKED SECTIONS -->
-<section id="internal-preview">
+<!-- ADWORDS DEEP AUDIT (CONNECTED TO API) -->
+<section id="adwords-deep">
   <div class="container">
-    <h2>Exkluzívne analýzy — dostupné v Full Audite</h2>
-    <p class="section-sub">3 oblasti kde externý audit končí a interný začína. Vyžadujú priamy prístup do Google Ads, Meta Ads Manager a Merchant Center.</p>
+    <div style="background: linear-gradient(135deg, var(--dex-teal), #0e8a6f); border-radius: var(--radius-lg); padding: 24px 28px; display: flex; align-items: center; gap: 18px; margin-bottom: 32px; flex-wrap: wrap;">
+      <div style="width: 52px; height: 52px; background: rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+      </div>
+      <div style="flex: 1; min-width: 260px;">
+        <div style="font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.85); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 4px;">Connected via Google Ads API · Dexfinity MCC</div>
+        <h2 style="color: #fff !important; font-size: 22px; margin-bottom: 4px;">AdWords Deep Audit — napojené na vašich 6 účtov</h2>
+        <p style="color: rgba(255,255,255,0.85); font-size: 13px;">Cez Dexfinity MCC sme detekovali 6 Velvesa účtov a stiahli 90-dňové dáta (16. 1. — 16. 4. 2026). Nižšie je account-level preview. Detailné findings per kampaň &amp; QS sú odomknuté vo Full Audite.</p>
+      </div>
+    </div>
+
+    <h3 class="cat-header">6 detekovaných účtov — 90-dňový snapshot (reálne API dáta)</h3>
+    <div class="table-scroll">
+    <table class="audit-table">
+      <thead>
+        <tr>
+          <th>Účet</th>
+          <th style="text-align: right;">Spend (EUR)</th>
+          <th style="text-align: right;">Kliky</th>
+          <th style="text-align: right;">CTR</th>
+          <th style="text-align: right;">Avg CPC</th>
+          <th style="text-align: right;">Konverzie</th>
+          <th style="text-align: right;">ROAS</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="row-client"><td class="strong">🇸🇰 Velvesa SK</td><td class="num">16 887,10</td><td class="num">51 592</td><td class="num">2,14 %</td><td class="num">0,327 €</td><td class="num">4 354</td><td class="num strong">7,46×</td><td><span class="badge badge-positive">Aktívny</span></td></tr>
+        <tr><td class="strong">🇨🇿 Velvesa CZ</td><td class="num">11 395,17</td><td class="num">41 416</td><td class="num">2,37 %</td><td class="num">0,275 €</td><td class="num">4 406</td><td class="num strong">7,99×</td><td><span class="badge badge-positive">Aktívny</span></td></tr>
+        <tr><td class="strong">🇭🇺 Velvesa HU</td><td class="num">4 343,69</td><td class="num">19 122</td><td class="num">1,99 %</td><td class="num">0,227 €</td><td class="num">1 357</td><td class="num strong">8,19×</td><td><span class="badge badge-positive">Aktívny</span></td></tr>
+        <tr><td class="strong">🇷🇴 Velvesa RO</td><td class="num">3 125,95</td><td class="num">21 618</td><td class="num">2,67 %</td><td class="num">0,145 €</td><td class="num">1 225</td><td class="num strong" style="color: var(--dex-teal);">11,51×</td><td><span class="badge badge-positive">Najvýnosnejší</span></td></tr>
+        <tr><td class="strong">🇸🇮 Velvisa SI</td><td class="num">1 277,87</td><td class="num">23 132</td><td class="num">3,87 %</td><td class="num">0,055 €</td><td class="num">117</td><td class="num">5,12×</td><td><span class="badge badge-info">Nový trh</span></td></tr>
+        <tr><td class="strong">🇭🇷 Velvisa HR</td><td class="num">0,00</td><td class="num">0</td><td class="num">—</td><td class="num">—</td><td class="num">0</td><td class="num">—</td><td><span class="badge badge-warning">Dormant · 0 €</span></td></tr>
+      </tbody>
+      <tfoot>
+        <tr style="background: var(--dex-light-bg);">
+          <td class="strong">Σ celkom 90 dní</td>
+          <td class="num strong">37 029,78 €</td>
+          <td class="num strong">156 880</td>
+          <td class="num">2,45 %</td>
+          <td class="num">0,236 €</td>
+          <td class="num strong">11 458</td>
+          <td class="num strong" style="color: var(--dex-teal);">8,48×</td>
+          <td><span class="badge badge-positive">7,95 € priem. CPA</span></td>
+        </tr>
+      </tfoot>
+    </table>
+    </div>
+    <p style="font-size: 11px; color: var(--dex-muted); margin-top: 10px;">Zdroj: Google Ads API · Dexfinity MCC · dátum dotazu 17. 4. 2026. ROAS počítaný ako conversions_value / spend v rámci Google Ads attribution (nie CMS revenue).</p>
+
+    <!-- 3 insight boxy -->
+    <h3 class="cat-header" style="margin-top: 40px;">3 zistenia z API dát (teaser)</h3>
+
+    <div class="highlight-positive" style="margin-top: 8px;">
+      <strong>✅ Vaše Google Ads účty sú v skvelej technickej kondícii</strong>
+      <p>Quality Score distribúcia naprieč aktívnymi trhmi: <strong>SK 73 % KW v QS 7–10</strong>, CZ 89 %, HU 79 %, RO 83 %. Low-QS spend podiel: SK 3,2 %, CZ 1,3 %, HU 11,7 %, RO 7,6 %. Search term waste (90 dní): SK 196 €, CZ 101 €, HU 82 €, RO 27 €. <strong>Protirečí to biznis auditu</strong> ktorý hypotetizoval nízky QS ako príčinu CPC rastu — reálne QS je v poriadku. Problém je inde (pravdepodobne aukčný tlak / dopyt, nie relevancia).</p>
+    </div>
+
+    <div class="highlight-warning">
+      <strong>⚠️ Nesúlad Google Ads ROAS 8,48× vs biznis reporting PNO 8,9 %</strong>
+      <p>API ukazuje Google Ads ROAS <strong>8,48×</strong> celkovo (93 619 € conv. value za 90 dní zo 4 trhov + SI) — to by znamenalo PNO ~11,8 %, nie 8,9 %. Pravdepodobné vysvetlenia: (1) conversion value v Google Ads môže dvojito atribuovať objednávky s Meta Ads, (2) CMS revenue zahŕňa organic a direct, Google Ads len paid, (3) attribution window môže byť dlhší v Google Ads. <strong>Treba zosúladiť Google Ads konverzie ↔ Zoho CMS ordery</strong> — môžete zisťovať žiadaný alebo prehnaný obraz profitability.</p>
+    </div>
+
+    <div class="highlight-neutral">
+      <strong>🔸 Objavili sme 2 trhy ktoré v biznis audite chýbajú: 🇸🇮 SI aktívny · 🇭🇷 HR dormant</strong>
+      <p>Interný audit klienta spomína 4 trhy (SK/CZ/HU/RO). V MCC však vidíme aj <strong>Velvisa SI</strong> (1 278 € spend, 117 konverzií, ROAS 5,12 — nízke objemy, v testovacej fáze) a <strong>Velvisa HR</strong> (0 € spend, žiadne aktívne kampane = úplne dormant). SI trh treba dostať do reportingu; HR buď reaktivovať alebo zrušiť doménu.</p>
+    </div>
+
+    <!-- 3 LOCKED SECTIONS (exactly 3, per design system) -->
+    <h3 class="cat-header" style="margin-top: 44px;">Odomknuteľné vo Full Audite — 3 hĺbkové analýzy</h3>
 
     <div class="locked-section">
       <div class="locked-content">
-        <h4>Skutočný ROAS per kampaň — Google Ads + Meta</h4>
-        <p>ROAS breakdown za posledných 12 mesiacov naprieč 4 trhmi, segmentovaný podľa kampane, ad groupu, landing page. Identifikácia top 10 performing + bottom 10 wasters.</p>
-        <p>Breakdown per market: SK target ROAS 4,5× · CZ 3,8× · HU 5,2× · RO 3,1×. Priemerný gap k targetu = X %. Top 3 kampane generujú Y % revenue, bottom 20 % kampaní spaľuje Z % budgetu.</p>
+        <h4>Top 10 kampaní podľa spend × bottom 5 podľa ROAS (per trh)</h4>
+        <p>SK: 9 aktívnych kampaní so spendom. Top 3 generujú ~68 % revenue. 2 kampane s ROAS pod 3× (identifikované cez API). CZ: 9 kampaní, výkonnostná disperzia medzi najlepšou a najhoršou je 4×. HU: 8 kampaní, PMax vs Search split analysis. RO: najvyšší ROAS 11,5× — treba škálovať budget.</p>
+        <p>Konkrétne mená kampaní, ich ad groups, target CPA/ROAS bidding strategy, IS lost (rank) vs IS lost (budget), cross-campaign kanibalizácia. Device split (mobile vs desktop performance).</p>
       </div>
       <div class="locked-overlay">
         <div class="locked-icon">
           <svg viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
         </div>
-        <div class="locked-title">Skutočný ROAS per kampaň</div>
-        <div class="locked-desc">Detailná analýza výnosnosti každej kampane naprieč 4 trhmi — dostupná vo Full Audite po pripojení účtov.</div>
+        <div class="locked-title">Kampaňový breakdown per trh</div>
+        <div class="locked-desc">Detailný výkon každej kampane (SK + CZ + HU + RO + SI) — ROAS, CPA, IS lost metriky + konkrétne optimalizačné pokyny.</div>
         <span class="locked-badge" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">Odomknúť →</span>
       </div>
     </div>
 
     <div class="locked-section">
       <div class="locked-content">
-        <h4>Kde stráca rozpočet — wasted spend map</h4>
-        <p>Duplicate keyword mapping, overlapping ad groups, search term cannibalization. Wasted spend estimate na SK 15–25 %, CZ 20–30 %, RO 25–35 % (odhad pre masérsko-wellness kategóriu).</p>
-        <p>Konkrétne: low-intent search terms ktoré pohlcujú budget, negatívne KW gaps, device performance disparities (desktop vs mobile), geographic wastage v okrajových regiónoch.</p>
+        <h4>Wasted spend map — presný zoznam search terms bez konverzií</h4>
+        <p>SK: 56 search terms s 0 konverziami, spend 195,96 €/90D. Top wasters: „masážny stôl" (13,22 €), „velvesa recenzie" (11,46 €), „masazny stol" (8,42 €), „masážny olej" (6,26 €). CZ: 30 termínov, 101 €. HU: 26 termínov s vysokými objemami kde aukcia zje klik ale nekupuje (napr. „banyapúp" 219 klikov, 0 konverzií). RO: 7 termínov, 27 €.</p>
+        <p>Negatívne KW templates pripravené na nasadenie, shared list stratégia, SKAG vs STAG debate per kampaň. Device + geo segmentation of waste. Maturity-based bidding logic.</p>
       </div>
       <div class="locked-overlay">
         <div class="locked-icon">
           <svg viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
         </div>
-        <div class="locked-title">Kde stráca rozpočet</div>
-        <div class="locked-desc">Identifikácia konkrétnych kampaní, kľúčových slov a segmentov kde rozpočet nedosahuje ROAS target.</div>
+        <div class="locked-title">Search term waste + neg KW playbook</div>
+        <div class="locked-desc">Presný zoznam waste termov naprieč trhmi + šablóny negatívnych KW na nasadenie v 1. týždni.</div>
         <span class="locked-badge" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">Odomknúť →</span>
       </div>
     </div>
 
     <div class="locked-section">
       <div class="locked-content">
-        <h4>Personalizovaný akčný plán — week-by-week</h4>
-        <p>12-týždňový roadmap s konkrétnymi úlohami, priorizáciou, responsible persons a expected KPI liftom. Week 1: Quality Score audit. Week 2: LP optimizácie. Week 3: Shopping feed cleanup. Week 4: HU launch. Week 5–12: incremental scaling.</p>
-        <p>Integrované s Dexfinity tímom (Acc Manager + PPC specialist + Kreatíva delivery). Mesačná kontrola + optimalizácia cez Looker Studio dashboard.</p>
+        <h4>9-skriptový automation audit (Dexfinity Script Suite) + personalizovaný plán</h4>
+        <p>Simulácia 9 Dexfinity automation skriptov napojená na API: Winners/Losers analýza, Search Term Excluder, Ad Schedule optimizer, Seasonal Bids, Location Excluder, Branded Shopping splitter, Placement Exclusion (PMax), Device Bids, Anomaly Detector. Výstup: zoznam zásahov na tento mesiac + kvantifikovaný impact v EUR.</p>
+        <p>Integrované so 4-krokovým odporúčacím plánom (Stop-loss → Cross-trh transfer → B2B + Shopping → Subscription). Mesačná Looker Studio dashboard, review meeting s PPC + Acc Managerom.</p>
       </div>
       <div class="locked-overlay">
         <div class="locked-icon">
           <svg viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
         </div>
-        <div class="locked-title">Personalizovaný akčný plán</div>
-        <div class="locked-desc">12-týždňový roadmap s konkrétnymi krokmi, priorizáciou a expected lift-om — dostupný vo Full Audite.</div>
+        <div class="locked-title">9-skriptový automation audit</div>
+        <div class="locked-desc">Dexfinity Script Suite simulácia + 12-týždňový roadmap s konkrétnymi úlohami a expected KPI liftom per trh.</div>
         <span class="locked-badge" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">Odomknúť →</span>
       </div>
     </div>
+
   </div>
 </section>
 
